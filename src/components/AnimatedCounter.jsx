@@ -10,7 +10,7 @@ const AnimatedCounter = () => {
                 {counterItems.map((item) => (
 
                     <div className="bg-zinc-900 rounded-lg p-10 flex flex-col justify-center">
-                        <div key={counterItems.label} className="counter-number text-white text-2xl font-bold mb-2 ">
+                        <div key={counterItems.label} className="counter-number text-white text-[1.8rem] font-bold mb-2 ">
                         {item.value} {item.suffix}
                         </div>
 

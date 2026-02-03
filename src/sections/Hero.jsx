@@ -44,7 +44,7 @@ const Hero = () => {
                         <div className="hero-text">
 
                             <h1>
-                                Shaping
+                                Turning 
                                 <span className="slide">
                                     <span className="wrapper">
                                         {words.map((word) => (
@@ -62,13 +62,20 @@ const Hero = () => {
                                 </span>
                             </h1>
 
-                            <h1>into Real Projects</h1>
-                            <h1>that Deliver Real Results</h1>
+                            <h1>into Real-World Systems</h1>
 
                         </div>
 
                         <p className="text-white-50 md:text-xl relative z-10 pointer-events-none">
-                            Hi, I'm Jimmy, a passionate web developer dedicated to transforming ideas. 
+                            Hello, I'm Jimmy. 
+                            <br />
+                            <br />
+                            I'm an Engineering Physics student at UBC, graduating in 2028. 
+                            <br /> 
+                            I'm a member of the UBC Rocket Design Team, where I work on and learn 
+                            <br />
+                            about firmware and software development for real-world engineering projects. 
+                            <br />
                         </p>
 
                         <Button 
