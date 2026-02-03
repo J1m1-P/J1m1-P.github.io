@@ -14,16 +14,19 @@ const HeroExperience = () => {
     const [show, setShow] = useState(false);
 
     useEffect(() => {
-        const t = setTimeout(() => setShow(true), 150);
+        const t = setTimeout(() => setShow(true), 500);
         return () => clearTimeout(t);
     }, []);
 
     return (
 
-        <Canvas className={`transition-opacity duration-1000 ease-out ${
-            show ? "opacity-100" : "opacity-0"
-        }`}
-        camera={{ position: [6, 5, 15], fov: 40}}>
+        <Canvas 
+            className={`transition-opacity duration-4500 ease-out ${
+                show ? "opacity-100" : "opacity-0"
+            }`}
+
+            camera={{ position: [6, 5, 15], fov: 40}}
+        >
 
             <OrbitControls 
                 enablePan={false}

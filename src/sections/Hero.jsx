@@ -4,6 +4,7 @@ import HeroExperience from '../components/HeroModels/HeroExperience.jsx'
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import AnimatedCounter from '../components/AnimatedCounter.jsx';
+import { useEffect, useState } from "react";
 
 const Hero = () => {
 
@@ -20,14 +21,42 @@ const Hero = () => {
                 y: 0, 
                 opacity: 1, 
                 stagger: 0.2, 
-                duration: 1.2, 
+                duration: 1, 
                 ease: 'power2.inOut'
             }, 
         )
     })
 
+    /* About Me animation */
+    useGSAP(() => {
+        gsap.fromTo('.hero-aboutme p',
+            {
+                y: 50, 
+                opacity: 0, 
+
+            }, 
+
+            {
+                y: 0, 
+                opacity: 1, 
+                stagger: 0.2, 
+                duration: 1, 
+                ease: 'power2.inOut', 
+                delay: 0.5
+            }, 
+        )
+    })
+
+    /* Button animation */
+    const [showButton, setShowButton] = useState(false);
+    useEffect(() => {
+        const t = setTimeout(() => setShowButton(true), 1200); // adjust delay if you want
+        return () => clearTimeout(t);
+    }, []);
+    
     return (
 
+        // ALl contents on the first page 
         <section id="hero" className="relative overflow-hidden">
 
             <div className="absolute top-0 left-0 z-10">
@@ -65,24 +94,41 @@ const Hero = () => {
                             <h1>into Real-World Systems</h1>
 
                         </div>
+                        
+                        <div className='hero-aboutme'>
 
-                        <p className="text-white-50 md:text-xl relative z-10 pointer-events-none">
-                            Hello, I'm Jimmy. 
-                            <br />
-                            <br />
-                            I'm an Engineering Physics student at UBC, graduating in 2028. 
-                            <br /> 
-                            I'm a member of the UBC Rocket Design Team, where I work on and learn 
-                            <br />
-                            about firmware and software development for real-world engineering projects. 
-                            <br />
-                        </p>
+                            <p className="text-white-50 md:text-xl relative z-10 pointer-events-none">
+                                Hello, I'm Jimmy. 
+                                <br />
+                                <br />
+                            </p>
 
-                        <Button 
-                            className="md:w-80 md:h-16 w-60 h-12"
-                            id="button"
-                            text="View My Work"
-                        />
+                            <p className="text-white-50 md:text-xl relative z-10 pointer-events-none">
+                                I'm an Engineering Physics student at UBC, graduating in 2028. 
+                                <br /> 
+                                I'm a member of the UBC Rocket Design Team, where I work on and learn 
+                                <br />
+                                about firmware and software development for real-world engineering projects. 
+                                <br />
+                            </p>
+
+                        </div>
+                        
+                        <div 
+                            className={`transition-all duration-2500 ease-out 
+                            ${showButton ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
+                            `}
+                        >
+                            
+                            <Button 
+                                className="md:w-80 md:h-16 w-60 h-12"
+                                id="button"
+                                text="View My Work"
+                            />
+
+                        </div>
+
+                        
 
                     </div>
 
