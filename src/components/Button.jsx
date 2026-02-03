@@ -1,7 +1,21 @@
+import { b } from "framer-motion/client";
+
 const Button = ({text, className, id}) => {
     return (
 
-        <a className={`${className ?? ''} cta-wrapper`}>
+        <a 
+        
+        onClick={(e) => {
+            e.preventDefault(); // To prevent reloading the screen onclick
+            const target = document.getElementById('counter'); // Scroll to the section with id 'counter'
+            if (target && id) {
+                const offset = window.innerHeight * 0.15; // 15% offset from the top
+                const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({top, behavior: 'smooth'})
+            }
+        }}
+        
+        className={`${className ?? ''} cta-wrapper`}>
 
             <div className="cta-button group">
 

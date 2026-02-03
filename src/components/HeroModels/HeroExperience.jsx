@@ -3,18 +3,32 @@ import { Canvas } from '@react-three/fiber'
 import { useMediaQuery } from 'react-responsive';
 import { Room } from '../HeroModels/Room';
 import HeroLights from '../HeroModels/HeroLights';
+import Particles from '../HeroModels/Particles';
+import { useEffect, useState } from 'react';
 
 const HeroExperience = () => {
 
     const isTablet = useMediaQuery({ query: '(max-width: 1024px)' });
     const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
+    const [show, setShow] = useState(false);
+
+    useEffect(() => {
+        const t = setTimeout(() => setShow(true), 150);
+        return () => clearTimeout(t);
+    }, []);
+
     return (
-        <Canvas camera={{ position: [0, 0, 15], fov: 45}}>
+
+        <Canvas className={`transition-opacity duration-1000 ease-out ${
+            show ? "opacity-100" : "opacity-0"
+        }`}
+        camera={{ position: [6, 5, 15], fov: 40}}>
 
             <OrbitControls 
                 enablePan={false}
-                enableZoom={!isTablet}
+                // enableZoom={!isTablet}
+                enableZoom={false}
                 maxDistance={20}
                 minDistance={5}
                 minPolarAngle={Math.PI / 5}
@@ -26,10 +40,7 @@ const HeroExperience = () => {
 
             <HeroLights />
 
-            {/* <mesh>
-                <boxGeometry args={[1, 1, 1]} />
-                <meshStandardMaterial color="blue" /> 
-            </mesh> */}
+            <Particles count={100}/> 
 
             <group
                 scale={isMobile ? 0.7 : 1}
