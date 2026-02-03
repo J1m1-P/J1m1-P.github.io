@@ -115,8 +115,8 @@ const Hero = () => {
                         </div>
                         
                         <div 
-                            className={`transition-all duration-2500 ease-out 
-                            ${showButton ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
+                            className={`transition-all duration-1500 ease-out 
+                            ${showButton ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-13'}
                             `}
                         >
                             

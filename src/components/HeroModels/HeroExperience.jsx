@@ -21,11 +21,13 @@ const HeroExperience = () => {
     return (
 
         <Canvas 
-            className={`transition-opacity duration-4500 ease-out ${
+            className={`transition-opacity duration-5000 ease-out ${
                 show ? "opacity-100" : "opacity-0"
             }`}
 
             camera={{ position: [6, 5, 15], fov: 40}}
+
+            // frameloop="demand"
         >
 
             <OrbitControls 
