@@ -5,13 +5,12 @@ import { useState } from 'react';
 
 const NavBar = () => {
 
-    const [scrolled, setScrolled] = useState(false);
-
     // Handling scroll effect for navbar
+    const [scrolled, setScrolled] = useState(false);
     useEffect(() => {
 
         const handleScroll = () => {
-            const isScrolled = window.scrollY > 10;
+            const isScrolled = window.scrollY > 5;
             setScrolled(true);
         }
 
@@ -21,10 +20,20 @@ const NavBar = () => {
 
     }, []);
 
+    // Handling fade-in effect for navbar
+    const [show, setShow] = useState(false);
+    useEffect(() => {
+        const t = setTimeout(() => setShow(true), 1500);
+        return () => clearTimeout(t);
+    }, []);
+
     return (
         <header className={`navbar ${scrolled ? 'scrolled' : 'not-scrolled'}`}>
 
-            <div className="inner">
+            <div className={`inner 
+                transition-all duration-1000 ease-out ${show ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
+                }`}
+            >
 
                 <HashLink className="logo" smooth to="#hero">
                     Jimmy Pan

@@ -21,7 +21,7 @@ const Hero = () => {
                 y: 0, 
                 opacity: 1, 
                 stagger: 0.2, 
-                duration: 1, 
+                duration: 0.8, 
                 ease: 'power2.inOut'
             }, 
         )
@@ -40,9 +40,9 @@ const Hero = () => {
                 y: 0, 
                 opacity: 1, 
                 stagger: 0.2, 
-                duration: 1, 
+                duration: 0.8, 
                 ease: 'power2.inOut', 
-                delay: 0.5
+                delay: 0.6
             }, 
         )
     })
@@ -50,7 +50,7 @@ const Hero = () => {
     /* Button animation */
     const [showButton, setShowButton] = useState(false);
     useEffect(() => {
-        const t = setTimeout(() => setShowButton(true), 1200); // adjust delay if you want
+        const t = setTimeout(() => setShowButton(true), 1500); // adjust delay if you want
         return () => clearTimeout(t);
     }, []);
     
@@ -115,8 +115,8 @@ const Hero = () => {
                         </div>
                         
                         <div 
-                            className={`transition-all duration-1500 ease-out 
-                            ${showButton ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-13'}
+                            className={`transition-all duration-4000 ease-out 
+                            ${showButton ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-0'}
                             `}
                         >
                             

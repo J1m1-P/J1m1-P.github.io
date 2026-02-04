@@ -14,7 +14,7 @@ const HeroExperience = () => {
     const [show, setShow] = useState(false);
 
     useEffect(() => {
-        const t = setTimeout(() => setShow(true), 500);
+        const t = setTimeout(() => setShow(true), 1500);
         return () => clearTimeout(t);
     }, []);
 
@@ -30,7 +30,7 @@ const HeroExperience = () => {
             onPointerLeave={() => setActive(false)}
         >
             <Canvas 
-                className={`transition-opacity duration-7000 ease-out ${
+                className={`transition-opacity duration-4000 ease-out ${
                     show ? "opacity-100" : "opacity-0"
                 }`}
 
