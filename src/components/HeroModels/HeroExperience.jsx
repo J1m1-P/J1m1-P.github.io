@@ -26,14 +26,17 @@ const HeroExperience = () => {
 
         <div 
             className="w-full h-full"
-            onPointerDown={() => setActive(true)}
-            onPointerUp={() => setActive(false)}
-            onPointerLeave={() => setActive(false)}
+            // onPointerDown={() => setActive(true)}
+            // onPointerUp={() => setActive(false)}
+            // onPointerLeave={() => setActive(false)}
+            style={{ touchAction: "pan-y" }}
         >
             <Canvas 
                 className={`transition-opacity duration-4000 ease-out ${
                     show ? "opacity-100" : "opacity-0"
                 } ${viewOnly ? "pointer-events-none" : ""}`}
+
+                style={{ touchAction: "pan-y" }}
 
                 camera={{ position: [6, 5, 15], fov: 40}}
 
