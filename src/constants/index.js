@@ -73,19 +73,19 @@ const logoIconsList = [
 
 const abilities = [
   {
-    imgPath: "/images/seo.png",
-    title: "Quality Focus",
-    desc: "Delivering high-quality results while maintaining attention to every detail.",
+    imgPath: "/images/learning1.png",
+    title: "Adaptable Learner",
+    desc: "Quickly learning new concepts, adjusting to feedback, and improving through iteration.",
   },
   {
-    imgPath: "/images/chat.png",
-    title: "Reliable Communication",
-    desc: "Keeping you updated at every step to ensure transparency and clarity.",
+    imgPath: "/images/communication1.png",
+    title: "Clear Communication",
+    desc: "Explaining ideas, decisions, and progress clearly so everyone stays aligned and confident.",
   },
   {
-    imgPath: "/images/time.png",
-    title: "On-Time Delivery",
-    desc: "Making sure projects are completed on schedule, with quality & attention to detail.",
+    imgPath: "/images/teamwork8.png",
+    title: "Collaborative & Supportive",
+    desc: "Working closely with teammates, sharing knowledge, and contributing reliably to group success.",
   },
 ];
 

@@ -7,6 +7,7 @@ import ShowcaseTitle from './sections/ShowcaseTitle.jsx'
 
 import { Routes, Route } from 'react-router-dom'
 import LogoSection from './components/LogoSection.jsx'
+import FeatureCards from './components/FeatureCards.jsx'
 
 const App = () => {
 
@@ -27,6 +28,7 @@ const App = () => {
                         <ShowcaseTitle />
                         <ShowcaseSection />
                         <LogoSection />
+                        <FeatureCards />
                     </>
                 } 
             />
