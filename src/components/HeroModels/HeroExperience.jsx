@@ -40,7 +40,7 @@ const HeroExperience = () => {
             >
 
                 <OrbitControls 
-                    enableRotate = {!isTablet}
+                    enabled = {!isTablet}
                     enablePan={false}
                     // enableZoom={!isTablet}
                     enableZoom={false}

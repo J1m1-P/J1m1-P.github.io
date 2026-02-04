@@ -5,6 +5,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import AnimatedCounter from '../components/AnimatedCounter.jsx';
 import { useEffect, useState } from "react";
+import { useMediaQuery } from 'react-responsive';
 
 const Hero = () => {
 
@@ -54,6 +55,9 @@ const Hero = () => {
         return () => clearTimeout(t);
     }, []);
     
+    /* Hide the button for mobile */
+    const isTablet = useMediaQuery({ query: '(max-width: 1024px)' });
+
     return (
 
         // ALl contents on the first page 
@@ -114,19 +118,21 @@ const Hero = () => {
 
                         </div>
                         
-                        <div 
-                            className={`transition-all duration-4000 ease-out 
-                            ${showButton ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-0'}
-                            `}
-                        >
+                        {!isTablet && (
+                            <div 
+                                className={`transition-all duration-4000 ease-out 
+                                ${showButton ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-0'}
+                                `}
+                            >
                             
-                            <Button 
-                                className="md:w-80 md:h-16 w-60 h-12"
-                                id="button"
-                                text="View My Work"
-                            />
+                                <Button 
+                                    className="md:w-80 md:h-16 w-60 h-12"
+                                    id="button"
+                                    text="View My Work"
+                                />
 
-                        </div>
+                            </div>
+                        )}
 
                         
                     </div>
