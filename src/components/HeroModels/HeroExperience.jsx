@@ -10,6 +10,7 @@ const HeroExperience = () => {
 
     const isTablet = useMediaQuery({ query: '(max-width: 1024px)' });
     const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+    const viewOnly = !isTablet;
 
     const [show, setShow] = useState(false);
 
@@ -32,7 +33,7 @@ const HeroExperience = () => {
             <Canvas 
                 className={`transition-opacity duration-4000 ease-out ${
                     show ? "opacity-100" : "opacity-0"
-                }`}
+                } ${viewOnly ? "pointer-events-none" : ""}`}
 
                 camera={{ position: [6, 5, 15], fov: 40}}
 
@@ -42,7 +43,6 @@ const HeroExperience = () => {
                 <OrbitControls 
                     enabled = {!isTablet}
                     enablePan={false}
-                    // enableZoom={!isTablet}
                     enableZoom={false}
                     maxDistance={20}
                     minDistance={5}
