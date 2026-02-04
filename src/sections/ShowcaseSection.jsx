@@ -49,7 +49,7 @@ const ShowcaseSection = () => {
     }, []);
 
     return (
-        <section id="work" ref={sectionRef} className="app-showcase pt-0">
+        <section id="work" ref={sectionRef} className="app-showcase pt-0 scroll-mt-65">
 
             <div className="w-full ">
 

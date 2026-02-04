@@ -1,9 +1,11 @@
 import { useEffect } from 'react'
+import NavBar from './components/NavBar.jsx'
 import Hero from './sections/Hero.jsx'
 import ShowcaseSection from './sections/ShowcaseSection.jsx'
+import ShowcaseTitle from './sections/ShowcaseTitle.jsx'
+
 
 import { Routes, Route } from 'react-router-dom'
-import ShowcaseTitle from './sections/ShowcaseTitle.jsx'
 
 const App = () => {
 
@@ -19,6 +21,7 @@ const App = () => {
                 path="/" 
                 element={
                     <>
+                        <NavBar /> 
                         <Hero />
                         <ShowcaseTitle />
                         <ShowcaseSection />
