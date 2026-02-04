@@ -10,7 +10,7 @@ const HeroExperience = () => {
 
     const isTablet = useMediaQuery({ query: '(max-width: 1024px)' });
     const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
-    const viewOnly = !isTablet;
+    const viewOnly = isTablet;
 
     const [show, setShow] = useState(false);
 
