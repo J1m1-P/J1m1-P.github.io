@@ -10,7 +10,7 @@ const ShowcaseTitle = () => {
                 My Projects
             </h2>
 
-
+            {/* Button to navigate to the projects page */}
             <Link to="/projects" className="inline-block cta-wrapper">
                 <button type="button" className="cta-button cta-sm group">
 

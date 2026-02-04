@@ -20,9 +20,7 @@ const App = () => {
                 element={
                     <>
                         <Hero />
-
                         <ShowcaseTitle />
-
                         <ShowcaseSection />
                     </>
                 } 

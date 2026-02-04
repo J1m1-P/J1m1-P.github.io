@@ -511,7 +511,7 @@ section {
          group-hover:-translate-x-4;
 }
 
-/* arrow bubble */
+/* arrow bubble (small) */
 .cta-button.cta-sm .arrow-wrapper {
   @apply absolute right-4 top-1/2 -translate-y-1/2
          size-8 rounded-full
@@ -520,12 +520,15 @@ section {
          overflow-hidden;
 }
 
-/* arrow animation */
+/* arrow animation — LEFT -> RIGHT (force override) */
 .cta-button.cta-sm .arrow-wrapper img {
-  @apply size-4
-         -translate-y-6
-         transition-all duration-500;
+  animation: none !important;            /* kill old bounce */
+  transform: translateX(-1.25rem);       /* start left */
+  transition: transform 500ms;           /* smooth slide */
+}
 
-  @apply group-hover:translate-y-0;
+/* on hover: slide into view */
+.cta-button.cta-sm:hover .arrow-wrapper img {
+  transform: translateX(0);
 }
 

@@ -129,7 +129,6 @@ const Hero = () => {
                         </div>
 
                         
-
                     </div>
 
                 </header>
