@@ -31,7 +31,8 @@ const ShowcaseSection = () => {
                         scrollTrigger: {
                             trigger: card,
                             start: 'top 100%', 
-                            once: true
+                            // once: true, 
+                            // force3D: true
                         }
                     }
                 );
@@ -48,7 +49,7 @@ const ShowcaseSection = () => {
     }, []);
 
     return (
-        <section id="work" ref={sectionRef} className="app-showcase">
+        <section id="work" ref={sectionRef} className="app-showcase pt-0">
 
             <div className="w-full ">
 

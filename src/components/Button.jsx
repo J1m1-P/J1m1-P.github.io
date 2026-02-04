@@ -15,7 +15,7 @@ const Button = ({text, className, id}) => {
             }
         }}
         
-        className={`inline-block ${className ?? ""} cta-wrapper`}>
+        className={`inline-block ${className ?? ""} cta-wrapper`}   >
 
             <div className="cta-button group">
 

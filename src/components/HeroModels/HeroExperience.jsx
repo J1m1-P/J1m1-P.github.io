@@ -18,44 +18,56 @@ const HeroExperience = () => {
         return () => clearTimeout(t);
     }, []);
 
+
+    const [active, setActive] = useState(false);
+
     return (
 
-        <Canvas 
-            className={`transition-opacity duration-5000 ease-out ${
-                show ? "opacity-100" : "opacity-0"
-            }`}
-
-            camera={{ position: [6, 5, 15], fov: 40}}
-
-            // frameloop="demand"
+        <div 
+            className="w-full h-full"
+            onPointerDown={() => setActive(true)}
+            onPointerUp={() => setActive(false)}
+            onPointerLeave={() => setActive(false)}
         >
+            <Canvas 
+                className={`transition-opacity duration-7000 ease-out ${
+                    show ? "opacity-100" : "opacity-0"
+                }`}
 
-            <OrbitControls 
-                enablePan={false}
-                // enableZoom={!isTablet}
-                enableZoom={false}
-                maxDistance={20}
-                minDistance={5}
-                minPolarAngle={Math.PI / 5}
-                maxPolarAngle={Math.PI / 2}
-                
-                minAzimuthAngle={-Math.PI / 4}
-                maxAzimuthAngle={Math.PI / 3}
-            />
+                camera={{ position: [6, 5, 15], fov: 40}}
 
-            <HeroLights />
-
-            <Particles count={100}/> 
-
-            <group
-                scale={isMobile ? 0.7 : 1}
-                position={[0, -3.5, 0]}
-                rotation={[0, -Math.PI/4, 0]}
+                frameloop={active ? "always" : "demand"}
             >
-                <Room /> 
-            </group>
 
-        </Canvas>
+                <OrbitControls 
+                    enablePan={false}
+                    // enableZoom={!isTablet}
+                    enableZoom={false}
+                    maxDistance={20}
+                    minDistance={5}
+                    minPolarAngle={Math.PI / 5}
+                    maxPolarAngle={Math.PI / 2}
+                
+                    minAzimuthAngle={-Math.PI / 4}
+                    maxAzimuthAngle={Math.PI / 3}
+                />
+
+                <HeroLights />
+
+                <Particles count={50}/> 
+
+                <group
+                    scale={isMobile ? 0.7 : 1}
+                    position={[0, -3.5, 0]}
+                    rotation={[0, -Math.PI/4, 0]}
+                >
+                    <Room /> 
+                </group>
+
+            </Canvas>
+        
+        </div>
+
     )
 }
 
