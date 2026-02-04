@@ -9,7 +9,7 @@ const Button = ({text, className, id}) => {
             e.preventDefault(); // To prevent reloading the screen onclick
             const target = document.getElementById('counter'); // Scroll to the section with id 'counter'
             if (target && id) {
-                const offset = window.innerHeight * 0.02; // 2% offset from the top
+                const offset = window.innerHeight - 1045; // offset from the top
                 const top = target.getBoundingClientRect().top + window.scrollY - offset;
                 window.scrollTo({top, behavior: 'smooth'})
             }

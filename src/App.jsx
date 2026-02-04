@@ -6,6 +6,7 @@ import ShowcaseTitle from './sections/ShowcaseTitle.jsx'
 
 
 import { Routes, Route } from 'react-router-dom'
+import LogoSection from './components/LogoSection.jsx'
 
 const App = () => {
 
@@ -25,6 +26,7 @@ const App = () => {
                         <Hero />
                         <ShowcaseTitle />
                         <ShowcaseSection />
+                        <LogoSection />
                     </>
                 } 
             />
