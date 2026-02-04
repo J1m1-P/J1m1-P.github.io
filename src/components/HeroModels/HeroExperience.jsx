@@ -36,7 +36,10 @@ const HeroExperience = () => {
                     show ? "opacity-100" : "opacity-0"
                 } ${viewOnly ? "pointer-events-none" : ""}`}
 
-                style={{ touchAction: "pan-y" }}
+                style={{ 
+                    touchAction: "pan-y", 
+                    pointerEvents: viewOnly ? "none" : "auto", 
+                }}
 
                 camera={{ position: [6, 5, 15], fov: 40}}
 
