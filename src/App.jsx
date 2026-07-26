@@ -1,49 +1,40 @@
-import { useEffect } from 'react'
-import NavBar from './components/NavBar.jsx'
-import Hero from './sections/Hero.jsx'
-import ShowcaseSection from './sections/ShowcaseSection.jsx'
-import ShowcaseTitle from './sections/ShowcaseTitle.jsx'
+import { useEffect } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
+import LoadingScreen from "./components/LoadingScreen.jsx";
+import SiteHeader from "./components/SiteHeader.jsx";
+import AboutPage from "./pages/AboutPage.jsx";
+import ContactPage from "./pages/ContactPage.jsx";
+import ExperiencePage from "./pages/ExperiencePage.jsx";
+import HomePage from "./pages/HomePage.jsx";
+import ProjectsPage from "./pages/ProjectsPage.jsx";
+import ResumePage from "./pages/ResumePage.jsx";
 
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
 
-import { Routes, Route } from 'react-router-dom'
-import LogoSection from './components/LogoSection.jsx'
-import FeatureCards from './components/FeatureCards.jsx'
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [pathname]);
 
-const App = () => {
+  return null;
+};
 
-    // Returning to the top of the page
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [])
+const App = () => (
+  <>
+    <LoadingScreen />
+    <ScrollToTop />
+    <SiteHeader />
+    <main>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/experience" element={<ExperiencePage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/resume" element={<ResumePage />} />
+      </Routes>
+    </main>
+  </>
+);
 
-    return (
-        <Routes>
-
-            <Route 
-                path="/" 
-                element={
-                    <>
-                        <NavBar /> 
-                        <Hero />
-                        <ShowcaseTitle />
-                        <ShowcaseSection />
-                        <LogoSection />
-                        <FeatureCards />
-                    </>
-                } 
-            />
-
-            <Route 
-                path="/projects" 
-                element={
-                    <>
-                        <ShowcaseSection />
-                    </>
-                } 
-            />
-
-        </Routes>
-    )
-}
-
-export default App
+export default App;

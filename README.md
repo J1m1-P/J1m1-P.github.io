@@ -1,16 +1,85 @@
-# React + Vite
+# Jimmy Pan — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React 19 and Vite portfolio with an interactive terminal, a data-driven
+project gallery, and hash-based routing for static hosting.
 
-Currently, two official plugins are available:
+## Development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+Before publishing, run:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm run lint
+npm run build
+```
 
-## Expanding the ESLint configuration
+There is no test suite or separate type-check command in this JavaScript
+project.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Project structure
+
+- `src/content/` — the three files intended for regular content editing
+- `src/components/` — small reusable interface pieces
+- `src/sections/` — the named sections that compose the homepage
+- `src/pages/` — one component for each navigable page
+- `public/` — images, documents, and other static files
+
+### Where to edit
+
+- `src/content/site.js` — name, intro, resume, navigation, highlights, and skills
+- `src/content/projects.js` — portfolio project entries
+- `src/content/terminal.js` — terminal prompt, welcome text, shortcuts, and files
+
+Application behavior and layout live outside `content/`. Normal content changes
+should not require editing a component.
+
+## Pages
+
+- `/` — introduction, terminal, and highlights
+- `/about` — profile, skills, and technology strip
+- `/projects` — complete project gallery
+- `/experience` — education and team experience
+- `/contact` — configured email and social links
+- `/resume` — public resume link or an unavailable state
+
+The header name returns Home. Page links and their order are controlled by
+`navLinks` in `src/content/site.js`.
+
+## Add a portfolio project
+
+1. Place its thumbnail in `public/images/`.
+2. Append one object to `projects` in `src/content/projects.js`.
+3. Supply a unique `id`, `title`, one- or two-sentence `description`, `image`,
+   and useful `imageAlt`.
+4. Optionally add `tags`, `website`, `repository`, and `accent`.
+
+No component or route edits are needed. Array order controls display order.
+
+## Customize the terminal
+
+Edit `src/content/terminal.js`. A file is an object with `content` and an
+optional `url`. A folder is a plain object containing more files. Project text
+files are generated automatically from `projects.js`.
+
+Resume text and its public URL are kept in `src/content/site.js` so personal
+information has one clear home.
+
+Contact links and experience cards are also plain arrays in `site.js`. Empty
+contact URLs are hidden automatically.
+
+Supported commands are `help`, `ls`, `cd`, `cat`, `open`, `pwd`, `whoami`, and
+`clear`. This is an intentionally limited portfolio interface, not a real shell.
+
+## Design notes
+
+- `HashRouter` is intentional so nested routes work on static hosts without
+  server rewrite rules.
+- Homepage project cards and the all-projects page share `ProjectCard`.
+- Keep personal facts and project claims accurate; current project entries
+  originated from the unfinished site and should be verified before publishing.
+
+See [TODO.md](./TODO.md) for the remaining content and release work.
