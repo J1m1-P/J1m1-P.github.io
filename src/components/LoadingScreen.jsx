@@ -37,7 +37,7 @@ const LoadingScreen = () => {
         if (!pageReady || currentProgress < 99 || completionScheduled) return;
         completionScheduled = true;
 
-        schedule(() => setProgress(100), 700);
+        schedule(() => setProgress(100), 500);
         schedule(() => setIsExiting(true), 1200);
         schedule(() => {
           document.body.style.overflow = previousOverflow;
@@ -112,7 +112,7 @@ const LoadingScreen = () => {
     >
       <div className="loading-content">
         <p className="loading-command">
-          <span>J1m1@Terminal</span>:~$ launch
+          <span>J1m1@Terminal</span>:~$ reboot
         </p>
         <p className="loading-name">{site.name}</p>
         <div
