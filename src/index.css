@@ -177,21 +177,18 @@ a {
   background: #d9ecff;
   transform: scaleX(0);
   transform-origin: left;
-  animation: loading-progress 1.05s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  transition: transform 80ms linear;
 }
 
 .loading-status {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
   margin: 0.75rem 0 0;
   color: #839cb5;
   font-size: 0.72rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-}
-
-@keyframes loading-progress {
-  to {
-    transform: scaleX(1);
-  }
 }
 
 /* Navigation */
