@@ -13,6 +13,12 @@ const COMMANDS = {
   reboot: "Reload the portfolio",
 };
 
+const CAT_IMAGES = [
+  "/images/cats/protected/white-lying.png",
+  "/images/cats/protected/calico-lying.png",
+  "/images/cats/protected/gray-lying.png",
+];
+
 const pathLabel = (parts) => (parts.length ? `~/${parts.join("/")}` : "~");
 const isFile = (node) => Object.hasOwn(node, "content");
 
@@ -56,6 +62,9 @@ const TerminalOutput = ({ result }) => {
 };
 
 const Terminal = () => {
+  const [catImage] = useState(
+    () => CAT_IMAGES[Math.floor(Math.random() * CAT_IMAGES.length)],
+  );
   const [currentPath, setCurrentPath] = useState([]);
   const [history, setHistory] = useState([
     { id: 0, result: { text: terminal.welcome.join("\n") } },
@@ -165,11 +174,16 @@ const Terminal = () => {
   };
 
   return (
-    <section
-      className="terminal-panel"
-      aria-label="Interactive portfolio terminal"
-      onClick={() => inputRef.current?.focus()}
-    >
+    <div className="terminal-shell">
+      <div className="terminal-cat" aria-hidden="true">
+        <img src={catImage} alt="" />
+      </div>
+
+      <section
+        className="terminal-panel"
+        aria-label="Interactive portfolio terminal"
+        onClick={() => inputRef.current?.focus()}
+      >
       <header className="terminal-toolbar">
         <div className="terminal-controls" aria-hidden="true">
           <span />
@@ -226,7 +240,8 @@ const Terminal = () => {
           </button>
         ))}
       </footer>
-    </section>
+      </section>
+    </div>
   );
 };
 

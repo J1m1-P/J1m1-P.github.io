@@ -422,9 +422,32 @@ a {
   z-index: 3;
   width: 100%;
   min-width: 0;
+  margin-top: 2.25rem;
+}
+
+.terminal-shell {
+  position: relative;
+}
+
+.terminal-cat {
+  position: absolute;
+  bottom: calc(100% - 0.55rem);
+  left: clamp(0.6rem, 1.5vw, 1.25rem);
+  z-index: 4;
+  width: clamp(8rem, 10vw, 9rem);
+  pointer-events: none;
+  user-select: none;
+}
+
+.terminal-cat img {
+  display: block;
+  width: 100%;
+  image-rendering: pixelated;
 }
 
 .terminal-panel {
+  position: relative;
+  z-index: 2;
   display: grid;
   grid-template-rows: auto 1fr auto;
   width: 100%;
@@ -934,6 +957,7 @@ a {
 
   .intro-terminal {
     width: min(100%, 48rem);
+    margin-top: 4rem;
     margin-inline: auto;
   }
 
@@ -1007,6 +1031,14 @@ a {
     min-height: auto;
     padding-top: 4.5rem;
     padding-bottom: 3rem;
+  }
+
+  .intro-terminal {
+    margin-top: 2.25rem;
+  }
+
+  .terminal-cat {
+    width: 8rem;
   }
 
   .intro-copy {
