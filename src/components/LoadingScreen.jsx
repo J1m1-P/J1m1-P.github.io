@@ -1,6 +1,34 @@
 import { useEffect, useState } from "react";
 import { site } from "../content/site.js";
 
+const LOADING_TIMINGS = {
+  // All delays below are measured in milliseconds.
+  reducedMotion: {
+    exitDelay: 80, // Time before the reduced-motion screen starts fading out.
+    cleanupDelay: 140, // Time before the reduced-motion screen is removed.
+  },
+  progress: {
+    initialDelay: 70, // Time before the first progress update.
+    phases: [
+      // `until` is a progress percentage; `step` is percentage points;
+      // `delay` is the random wait between progress updates.
+      { until: 60, step: [6, 12], delay: [38, 70] },
+      { until: 85, step: [3, 6], delay: [60, 110] },
+      { until: 95, step: [1, 3], delay: [85, 155] },
+      { until: 99, step: [1, 1], delay: [155, 215] },
+    ],
+  },
+  readinessTimeout: 2800, // Maximum wait for the page and fonts to be ready.
+  completion: {
+    readyDelay: 250, // Time showing 100%/"Ready" before fading out.
+    exitDelay: 425, // Time before the loading screen starts fading out.
+    cleanupDelay: 675, // Time before removal; includes the 350 ms CSS fade.
+  },
+};
+
+const randomBetween = ([minimum, maximum]) =>
+  minimum + Math.random() * (maximum - minimum + 1);
+
 const LoadingScreen = () => {
   const [isExiting, setIsExiting] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
@@ -23,11 +51,14 @@ const LoadingScreen = () => {
 
     if (reducedMotion) {
       schedule(() => setProgress(100), 0);
-      schedule(() => setIsExiting(true), 80);
+      schedule(
+        () => setIsExiting(true),
+        LOADING_TIMINGS.reducedMotion.exitDelay,
+      );
       schedule(() => {
         document.body.style.overflow = previousOverflow;
         setIsVisible(false);
-      }, 140);
+      }, LOADING_TIMINGS.reducedMotion.cleanupDelay);
     } else {
       let currentProgress = 0;
       let pageReady = false;
@@ -37,31 +68,27 @@ const LoadingScreen = () => {
         if (!pageReady || currentProgress < 99 || completionScheduled) return;
         completionScheduled = true;
 
-        schedule(() => setProgress(100), 500);
-        schedule(() => setIsExiting(true), 1200);
+        schedule(
+          () => setProgress(100),
+          LOADING_TIMINGS.completion.readyDelay,
+        );
+        schedule(
+          () => setIsExiting(true),
+          LOADING_TIMINGS.completion.exitDelay,
+        );
         schedule(() => {
           document.body.style.overflow = previousOverflow;
           setIsVisible(false);
-        }, 1550);
+        }, LOADING_TIMINGS.completion.cleanupDelay);
       };
 
       const advanceProgress = () => {
-        let step;
-        let nextDelay;
-
-        if (currentProgress < 60) {
-          step = 6 + Math.floor(Math.random() * 7);
-          nextDelay = 45 + Math.random() * 50;
-        } else if (currentProgress < 85) {
-          step = 3 + Math.floor(Math.random() * 4);
-          nextDelay = 70 + Math.random() * 70;
-        } else if (currentProgress < 95) {
-          step = 1 + Math.floor(Math.random() * 3);
-          nextDelay = 100 + Math.random() * 90;
-        } else {
-          step = 1;
-          nextDelay = 180 + Math.random() * 120;
-        }
+        const phase =
+          LOADING_TIMINGS.progress.phases.find(
+            ({ until }) => currentProgress < until,
+          ) ?? LOADING_TIMINGS.progress.phases.at(-1);
+        const step = Math.floor(randomBetween(phase.step));
+        const nextDelay = randomBetween(phase.delay);
 
         currentProgress = Math.min(99, currentProgress + step);
         setProgress(currentProgress);
@@ -81,7 +108,9 @@ const LoadingScreen = () => {
         }
       });
       const fontsReady = document.fonts?.ready ?? Promise.resolve();
-      const readinessTimeout = new Promise((resolve) => schedule(resolve, 3000));
+      const readinessTimeout = new Promise((resolve) =>
+        schedule(resolve, LOADING_TIMINGS.readinessTimeout),
+      );
 
       Promise.race([
         Promise.all([windowReady, fontsReady]),
@@ -92,7 +121,7 @@ const LoadingScreen = () => {
         complete();
       });
 
-      schedule(advanceProgress, 80);
+      schedule(advanceProgress, LOADING_TIMINGS.progress.initialDelay);
     }
 
     return () => {

@@ -79,7 +79,7 @@ a {
 .section-heading h2,
 .page-heading h1 {
   margin: 0;
-  font-size: clamp(2rem, 4vw, 3.75rem);
+  font-size: clamp(1.85rem, 3.25vw, 3.1rem);
   font-weight: 650;
   line-height: 1.05;
   letter-spacing: -0.035em;

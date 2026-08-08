@@ -24,7 +24,7 @@ export const site = {
   },
   about: {
     eyebrow: "About",
-    title: "Engineering across disciplines",
+    title: "Across Disciplines",
     description:
       "I'm studying Engineering Physics at UBC, where I've become especially interested in problems that cross the boundary between hardware and software. On the UBC Rocket Design Team, I develop firmware and software for systems that must work reliably outside the classroom.",
     opportunity:
