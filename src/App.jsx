@@ -19,11 +19,18 @@ const ScrollToTop = () => {
   return null;
 };
 
+const RouteTransition = () => {
+  const { pathname } = useLocation();
+
+  return <div key={pathname} className="route-transition" aria-hidden="true" />;
+};
+
 const App = () => (
   <>
     <LoadingScreen />
     <ScrollToTop />
     <SiteHeader />
+    <RouteTransition />
     <main>
       <Routes>
         <Route path="/" element={<HomePage />} />

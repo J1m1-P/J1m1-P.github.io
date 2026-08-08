@@ -13,10 +13,11 @@ export const site = {
     buttonTo: "/about",
   },
   projects: {
-    pageEyebrow: "Portfolio",
-    pageTitle: "All Projects",
-    pageDescription:
-      "A collection of software and engineering work. Each entry is managed from one project content file.",
+    // Edit these three values to change the Projects page's small title,
+    // main title, and introductory sentence.
+    pageEyebrow: "projects",
+    pageTitle: "The Gallery",
+    pageDescription: "Ideas are cheap. Show me the product.",
   },
   skills: {
     eyebrow: "How I work",
@@ -24,11 +25,13 @@ export const site = {
   },
   about: {
     eyebrow: "About",
-    title: "Across Disciplines",
+    title: "From Circuits to Code",
     description:
-      "I'm studying Engineering Physics at UBC, where I've become especially interested in problems that cross the boundary between hardware and software. On the UBC Rocket Design Team, I develop firmware and software for systems that must work reliably outside the classroom.",
+      "I’m an Engineering Physics student at UBC with a strong interest in embedded systems, firmware, and software that interacts with the physical world.",
+    details:
+      "I enjoy solving problems that cross the boundary between hardware and software — especially when they involve real constraints, careful design, and reliable execution. Through projects like UBC Rocket, I work on systems that are meant to perform beyond the classroom.",
     opportunity:
-      "I'm always open to opportunities where I can learn quickly, contribute to meaningful technical work, and collaborate with people building ambitious things.",
+      "I’m always open to opportunities where I can learn fast, contribute meaningfully, and help build ambitious technical projects.",
   },
   experience: {
     eyebrow: "Experience",
@@ -136,7 +139,53 @@ export const skills = [
   },
 ];
 
-export const technologyLogos = Array.from({ length: 11 }, (_, index) => ({
-  name: `Technology ${index + 1}`,
-  image: `/images/logos/company-logo-${index + 1}.png`,
-}));
+export const skillLogos = [
+  {
+    name: "Git",
+    image: "/images/skills/skill-logo-git.svg",
+  },
+  {
+    name: "GitHub",
+    image: "/images/skills/skill-logo-github.svg",
+  },
+  {
+    name: "C",
+    image: "/images/skills/skill-logo-c.svg",
+  },
+  {
+    name: "C++",
+    image: "/images/skills/skill-logo-cpp.svg",
+  },
+  {
+    name: "Python",
+    image: "/images/skills/skill-logo-python.svg",
+  },
+  {
+    name: "PlatformIO",
+    image: "/images/skills/skill-logo-platformio.svg",
+  },
+  {
+    name: "Arduino",
+    image: "/images/skills/skill-logo-arduino.svg",
+  },
+  {
+    name: "STM32",
+    image: "/images/skills/skill-logo-stm32.svg",
+  },
+  {
+    name: "ESP32",
+    image: "/images/skills/skill-logo-espressif.svg",
+  },
+  {
+    name: "Raspberry Pi",
+    image: "/images/skills/skill-logo-rpi.svg",
+  },
+  {
+    name: "Altium Designer",
+    image: "/images/skills/skill-logo-altium.svg",
+  },
+  {
+    name: "KiCad",
+    image: "/images/skills/skill-logo-kicad.svg",
+  }
+];
