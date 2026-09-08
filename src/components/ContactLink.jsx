@@ -1,0 +1,87 @@
+import { Link } from "react-router-dom";
+
+const iconPaths = {
+  github: (
+    <path d="M12 2.2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.87c-2.78.6-3.37-1.18-3.37-1.18-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.35 1.09 2.92.83.09-.65.35-1.09.64-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 7.74c.85 0 1.7.11 2.5.34 1.9-1.29 2.74-1.02 2.74-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.86v2.04c0 .27.18.58.69.48A10 10 0 0 0 12 2.2Z" />
+  ),
+  linkedin: (
+    <path d="M6.5 8.2H3.2V19h3.3V8.2ZM4.85 3a1.93 1.93 0 1 0 0 3.86 1.93 1.93 0 0 0 0-3.86ZM19.3 12.8c0-3.25-1.73-4.76-4.04-4.76-1.86 0-2.7 1.03-3.17 1.75V8.2H8.8V19h3.3v-5.35c0-1.41.26-2.78 2.02-2.78 1.74 0 1.76 1.63 1.76 2.87V19h3.3l.12-6.2Z" />
+  ),
+  email: (
+    <path d="M3.5 5h17A1.5 1.5 0 0 1 22 6.5v11a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 17.5v-11A1.5 1.5 0 0 1 3.5 5Zm.3 2 8.2 6 8.2-6H3.8Zm16.4 10V9.22l-7.67 5.61a.9.9 0 0 1-1.06 0L3.8 9.22V17h16.4Z" />
+  ),
+  resume: (
+    <path d="M6 2.5h8.4L20 8.1v13.4H6v-19Zm2 2V19.5h10V9h-4.5V4.5H8Zm7.5 1.4V7H16.6l-1.1-1.1ZM9.5 12h7v1.8h-7V12Zm0 3.5h7v1.8h-7v-1.8Z" />
+  ),
+};
+
+const ContactIcon = ({ name }) => {
+  if (name?.startsWith("/")) {
+    return <img src={name} alt="" />;
+  }
+
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      {iconPaths[name] ?? iconPaths.email}
+    </svg>
+  );
+};
+
+const DirectionIcon = ({ external }) => (
+  <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+    {external ? (
+      <path d="M6 4h10v10M16 4 4 16" />
+    ) : (
+      <path d="M3 10h13m-5-5 5 5-5 5" />
+    )}
+  </svg>
+);
+
+const ContactLink = ({
+  name,
+  url,
+  handle,
+  icon,
+  description,
+  priority = "primary",
+  newTab = false,
+}) => {
+  const isInternal = url?.startsWith("/") && !newTab;
+  const isExternal = newTab || /^https?:///.test(url);
+  const className = `contact-link contact-link--${priority}`;
+  const content = (
+    <>
+      <span className="contact-link-icon">
+        <ContactIcon name={icon} />
+      </span>
+      <span className="contact-link-copy">
+        <strong>{name}</strong>
+        {description && <span>{description}</span>}
+        {handle && <span className="contact-link-value">{handle}</span>}
+      </span>
+      <span className="contact-link-action" aria-hidden="true">
+        <DirectionIcon external={isExternal} />
+      </span>
+    </>
+  );
+
+  if (isInternal) {
+    return (
+      <Link className={className} to={url}>
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <a
+      className={className}
+      href={url}
+      {...(isExternal && { target: "_blank", rel: "noopener noreferrer" })}
+    >
+      {content}
+    </a>
+  );
+};
+
+export default ContactLink;

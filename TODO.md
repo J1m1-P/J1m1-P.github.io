@@ -2,9 +2,10 @@
 
 ## Before publishing
 
-- Verify that all three current project titles, descriptions, tags, and images
-  describe Jimmy's real work; they appear to originate from template content.
-- Add real project website and repository URLs where available.
+- Add an ENPH robot project image when one is ready.
+- Build a dedicated robot project page from
+  `docs/projects/enph-253-autonomous-robot.md` after verifying the open factual
+  items listed there, especially the competition result.
 - Add the public resume URL to `src/content/site.js`.
 - Add email, GitHub, and LinkedIn URLs to `contactLinks` in `src/content/site.js`.
 - Replace generic technology-logo alt labels with the actual technology names.

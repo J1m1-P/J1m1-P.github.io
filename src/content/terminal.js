@@ -8,11 +8,11 @@ const projectFiles = Object.fromEntries(
       content: [
         project.title,
         "",
-        project.description,
+        project.summary,
         "",
-        `Tags: ${project.tags?.join(", ") || "Not listed"}`,
+        `Skills: ${project.skills?.join(", ") || "Not listed"}`,
       ].join("\n"),
-      url: project.website || project.repository,
+      url: project.website || project.github || project.news,
     },
   ]),
 );

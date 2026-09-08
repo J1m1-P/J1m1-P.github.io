@@ -2,9 +2,16 @@ import { useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { navLinks, site } from "../content/site.js";
 
+import usePersonalAccess from '../hooks/usePersonalAccess.js';
+
 const SiteHeader = () => {
   const mobileMenuRef = useRef(null);
+  const personalUnlocked = usePersonalAccess();
   const closeMobileMenu = () => mobileMenuRef.current?.removeAttribute("open");
+
+  const visibleNavLinks = personalUnlocked
+    ? [...navLinks, { name: 'Personal', to: '/personal' }]
+    : navLinks;
 
   return (
     <header className="site-header">
@@ -15,8 +22,11 @@ const SiteHeader = () => {
 
         <nav aria-label="Primary navigation">
           <ul>
-            {navLinks.map(({ to, name }) => (
-              <li key={name}>
+            {visibleNavLinks.map(({ to, name }) => (
+              <li
+                className={name === 'Personal' ? 'personal-nav-item' : undefined}
+                key={name}
+              >
                 <NavLink to={to}>
                   {name}
                 </NavLink>
@@ -32,7 +42,7 @@ const SiteHeader = () => {
         <details className="mobile-menu" ref={mobileMenuRef}>
           <summary>Menu</summary>
           <nav aria-label="Mobile navigation">
-            {navLinks.map(({ to, name }) => (
+            {visibleNavLinks.map(({ to, name }) => (
               <NavLink to={to} onClick={closeMobileMenu} key={name}>
                 {name}
               </NavLink>

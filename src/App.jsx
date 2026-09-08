@@ -9,6 +9,8 @@ import HomePage from "./pages/HomePage.jsx";
 import ProjectsPage from "./pages/ProjectsPage.jsx";
 import ResumePage from "./pages/ResumePage.jsx";
 
+import PersonalPage from './pages/PersonalPage.jsx';
+
 const ScrollToTop = () => {
   const { pathname } = useLocation();
 
@@ -39,6 +41,7 @@ const App = () => (
         <Route path="/experience" element={<ExperiencePage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/resume" element={<ResumePage />} />
+        <Route path='/personal' element={<PersonalPage />} />
       </Routes>
     </main>
   </>

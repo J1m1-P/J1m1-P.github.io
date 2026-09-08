@@ -4,6 +4,7 @@
  */
 export const site = {
   name: "Jimmy Pan",
+
   intro: {
     titleStart: "Bringing",
     titleEnd: "into the Real World",
@@ -12,17 +13,7 @@ export const site = {
     button: "Get to Know Me",
     buttonTo: "/about",
   },
-  projects: {
-    // Edit these three values to change the Projects page's small title,
-    // main title, and introductory sentence.
-    pageEyebrow: "projects",
-    pageTitle: "The Gallery",
-    pageDescription: "Ideas are cheap. Show me the product.",
-  },
-  skills: {
-    eyebrow: "How I work",
-    title: "Skills beyond the toolset",
-  },
+
   about: {
     eyebrow: "About",
     title: "From Circuits to Code",
@@ -33,19 +24,110 @@ export const site = {
     opportunity:
       "I’m always open to opportunities where I can learn fast, contribute meaningfully, and help build ambitious technical projects.",
   },
+
+  projects: {
+    // Edit these three values to change the Projects page's small title,
+    // main title, and introductory sentence.
+    pageEyebrow: "projects",
+    pageTitle: "The Gallery",
+    pageDescription: "Courses teach the theory. Projects teach the rest.",
+  },
+
+  skills: {
+    eyebrow: "How I work",
+    title: "Skills beyond the toolset",
+  },
+
   experience: {
     eyebrow: "Experience",
     title: "Where I'm learning and building",
     description:
-      "My current engineering education and team experience.",
+      "Titles are nice. Experience matters more.",
   },
+
+  /**
+   * CONTACT PAGE
+   * Add, remove, or reorder entries in links to update the page.
+   * Set enabled: false to hide one without deleting it.
+   *
+   * TODO: Replace the example email, profile URLs, and handles below.
+   */
   contact: {
     eyebrow: "Contact",
-    title: "Let's connect",
+    title: "Let’s connect",
     description:
-      "Use one of the links below to get in touch.",
+      "I’m always happy to talk about firmware, embedded systems, robotics, or interesting projects. Feel free to reach out.",
+    getInTouchLabel: "Get in touch",
     emptyMessage: "Contact links will be added soon.",
+    footer: {
+      copyright: "© 2026 Jimmy Pan",
+      sourceLabel: "View Source",
+      sourceUrl: "https://github.com/J1m1-P/J1m1-P.github.io",
+    },
+    links: [
+      {
+        name: "Email",
+        type: "email",
+        url: "mailto:jimmypan0410@gmail.com",
+        handle: "jimmypan0410@gmail.com",
+        description: "The best way to reach me",
+        icon: "email",
+        priority: "email",
+        copyable: true,
+      },
+      {
+        name: "GitHub",
+        type: "external",
+        url: "https://github.com/j1m1-p",
+        icon: "github",
+        priority: "primary",
+        newTab: true,
+      },
+      {
+        name: "LinkedIn",
+        type: "external",
+        url: "https://www.linkedin.com/in/jimmypan-ubc-enph",
+        icon: "linkedin",
+        priority: "primary",
+        newTab: true,
+      },
+      {
+        name: "Resume",
+        type: "document",
+        url: "/resume",
+        icon: "resume",
+        priority: "primary",
+        newTab: false,
+      },
+    ],
+    testimonials: {
+      eyebrow: "Testimonials",
+      items: [
+        {
+          quote:
+            "When I worked with Jimmy in a project course, he was the sharpest mind on the team. He always found creative solutions that greatly benefited the project. Beyond his technical skills, he is also an amazing person to work with. I look forward to working with him again in ENPH 353!",
+          name: "Samuel Lau",
+          role: "Software Lead",
+          organization: "UBC Thunderbots",
+        },
+        {
+          quote:
+            "Jimmy communicates clearly, learns quickly, and consistently turns technical ideas into reliable results.",
+          name: "Your Name",
+          role: "Team Lead",
+          organization: "Organization",
+        },
+        {
+          quote:
+            "Dependable, collaborative, and always willing to dig deeper to understand how a system really works.",
+          name: "Your Name",
+          role: "Colleague",
+          organization: "Organization",
+        },
+      ],
+    },
   },
+
   resume: {
     eyebrow: "Resume",
     title: "My resume",
@@ -67,29 +149,6 @@ export const navLinks = [
   { name: "Projects", to: "/projects" },
   { name: "Experience", to: "/experience" },
   { name: "Contact", to: "/contact" },
-];
-
-export const experience = [
-  {
-    title: "Firmware & Software",
-    organization: "UBC Rocket Design Team",
-    period: "Current",
-    description:
-      "Working on and learning about firmware and software development for real-world engineering projects.",
-  },
-  {
-    title: "Engineering Physics",
-    organization: "University of British Columbia",
-    period: "Expected graduation 2028",
-    description:
-      "An interdisciplinary engineering education spanning software, electronics, physics, and design.",
-  },
-];
-
-export const contactLinks = [
-  { label: "Email", url: "" },
-  { label: "GitHub", url: "" },
-  { label: "LinkedIn", url: "" },
 ];
 
 export const introWords = [

@@ -1,24 +1,80 @@
-import { experience, site } from "../content/site.js";
+import { useState } from "react";
+import { experiences } from "../content/experience.js";
+import { site } from "../content/site.js";
 
-const ExperiencePage = () => (
-  <section className="standard-page padding-x-lg">
-    <header className="page-heading">
-      <p className="eyebrow">{site.experience.eyebrow}</p>
-      <h1>{site.experience.title}</h1>
-      <p>{site.experience.description}</p>
-    </header>
+const ExperiencePage = () => {
+  const [activeEntries, setActiveEntries] = useState(() => new Set());
 
-    <div className="info-grid">
-      {experience.map((entry) => (
-        <article className="info-card" key={`${entry.organization}-${entry.title}`}>
-          <p className="info-meta">{entry.period}</p>
-          <h2>{entry.title}</h2>
-          <h3>{entry.organization}</h3>
-          <p>{entry.description}</p>
-        </article>
-      ))}
-    </div>
-  </section>
-);
+  const toggleEntry = (index) => {
+    setActiveEntries((currentEntries) => {
+      const nextEntries = new Set(currentEntries);
+
+      if (nextEntries.has(index)) {
+        nextEntries.delete(index);
+      } else {
+        nextEntries.add(index);
+      }
+
+      return nextEntries;
+    });
+  };
+
+  return (
+    <section className="standard-page padding-x-lg">
+      <header className="page-heading">
+        <p className="eyebrow">{site.experience.eyebrow}</p>
+        <h1>{site.experience.title}</h1>
+        <p>{site.experience.description}</p>
+      </header>
+
+      <ol className="experience-timeline">
+        {experiences.map((entry, index) => {
+          const isActive = activeEntries.has(index);
+          const visualId = `experience-visual-${index}`;
+
+          return (
+            <li
+              className={`timeline-entry${isActive ? " is-active" : ""}`}
+              key={`${entry.title}-${entry.date}`}
+            >
+              <span className="timeline-marker" aria-hidden="true" />
+              <article className="timeline-card">
+                <div className="timeline-card-heading">
+                  <div>
+                    <h2>{entry.title}</h2>
+                    {entry.organization && <p>{entry.organization}</p>}
+                  </div>
+                  <time>{entry.date}</time>
+                </div>
+                <p className="timeline-summary">{entry.summary}</p>
+                <button
+                  className="timeline-card-toggle"
+                  type="button"
+                  aria-controls={visualId}
+                  aria-expanded={isActive}
+                  aria-label={`${isActive ? "Hide" : "Show"} image for ${entry.title}`}
+                  onClick={() => toggleEntry(index)}
+                />
+              </article>
+              <figure
+                id={visualId}
+                className="timeline-visual"
+                aria-hidden={!isActive}
+              >
+                {entry.image ? (
+                  <img src={entry.image} alt={entry.imageAlt || entry.title} />
+                ) : (
+                  <div className="timeline-image-placeholder" aria-hidden="true">
+                    <span>Image placeholder</span>
+                  </div>
+                )}
+              </figure>
+            </li>
+          );
+        })}
+      </ol>
+    </section>
+  );
+};
 
 export default ExperiencePage;

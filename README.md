@@ -51,11 +51,11 @@ The header name returns Home. Page links and their order are controlled by
 
 ## Add a portfolio project
 
-1. Place its thumbnail in `public/images/`.
-2. Append one object to `projects` in `src/content/projects.js`.
-3. Supply a unique `id`, `title`, one- or two-sentence `description`, `image`,
-   and useful `imageAlt`.
-4. Optionally add `tags`, `website`, `repository`, and `accent`.
+1. Append one object to `projects` in `src/content/projects.js`.
+2. Supply a unique `id`, `title`, and concise `summary`.
+3. Optionally add `skills`, `github`, `website`, and `news` URLs.
+4. To include a thumbnail, place it in `public/images/` and add `image`, a
+   useful `imageAlt`, and optionally `accent`.
 
 No component or route edits are needed. Array order controls display order.
 
