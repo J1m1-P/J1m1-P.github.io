@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import LoadingScreen from "./components/LoadingScreen.jsx";
 import SiteHeader from "./components/SiteHeader.jsx";
@@ -21,30 +21,78 @@ const ScrollToTop = () => {
   return null;
 };
 
-const RouteTransition = () => {
-  const { pathname } = useLocation();
+const RouteTransitionLayer = ({ pathname, personalDiscovery, onTransitionComplete }) => {
+  const [isVisible, setIsVisible] = useState(true);
+  const [isDiscoveryTransition] = useState(
+    () => pathname === "/personal" && personalDiscovery === "revealing",
+  );
 
-  return <div key={pathname} className="route-transition" aria-hidden="true" />;
+  if (!isVisible) return null;
+
+  return (
+    <div
+      className={`route-transition${pathname === '/personal' ? ' route-transition--personal' : ''}${isDiscoveryTransition ? ' route-transition--discovery' : ''}`}
+      aria-hidden="true"
+      onAnimationEnd={(event) => {
+        if (event.target !== event.currentTarget || event.animationName !== "route-fade-through") return;
+
+        setIsVisible(false);
+        if (personalDiscovery === "revealing") {
+          onTransitionComplete(pathname === "/personal");
+        }
+      }}
+    />
+  );
 };
 
-const App = () => (
-  <>
-    <LoadingScreen />
-    <ScrollToTop />
-    <SiteHeader />
-    <RouteTransition />
-    <main>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/projects" element={<ProjectsPage />} />
-        <Route path="/experience" element={<ExperiencePage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/resume" element={<ResumePage />} />
-        <Route path='/personal' element={<PersonalPage />} />
-      </Routes>
-    </main>
-  </>
-);
+const RouteTransition = ({ personalDiscovery, onTransitionComplete }) => {
+  const { pathname } = useLocation();
+
+  return (
+    <RouteTransitionLayer
+      key={pathname}
+      pathname={pathname}
+      personalDiscovery={personalDiscovery}
+      onTransitionComplete={onTransitionComplete}
+    />
+  );
+};
+
+const App = () => {
+  const [personalDiscovery, setPersonalDiscovery] = useState("hidden");
+  const completePersonalTransition = (arrivedAtPersonal) => {
+    setPersonalDiscovery((current) =>
+      current === "revealing"
+        ? (arrivedAtPersonal ? "discovered" : "hidden")
+        : current,
+    );
+  };
+
+  return (
+    <>
+      <LoadingScreen />
+      <ScrollToTop />
+      <SiteHeader personalDiscovered={personalDiscovery !== "hidden"} />
+      <RouteTransition
+        personalDiscovery={personalDiscovery}
+        onTransitionComplete={completePersonalTransition}
+      />
+      <main>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/experience" element={<ExperiencePage />} />
+          <Route
+            path="/contact"
+            element={<ContactPage onPersonalTransitionStarted={() => setPersonalDiscovery("revealing")} />}
+          />
+          <Route path="/resume" element={<ResumePage />} />
+          <Route path='/personal' element={<PersonalPage />} />
+        </Routes>
+      </main>
+    </>
+  );
+};
 
 export default App;

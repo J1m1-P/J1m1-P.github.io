@@ -2,16 +2,9 @@ import { useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { navLinks, site } from "../content/site.js";
 
-import usePersonalAccess from '../hooks/usePersonalAccess.js';
-
-const SiteHeader = () => {
+const SiteHeader = ({ personalDiscovered }) => {
   const mobileMenuRef = useRef(null);
-  const personalUnlocked = usePersonalAccess();
   const closeMobileMenu = () => mobileMenuRef.current?.removeAttribute("open");
-
-  const visibleNavLinks = personalUnlocked
-    ? [...navLinks, { name: 'Personal', to: '/personal' }]
-    : navLinks;
 
   return (
     <header className="site-header">
@@ -22,16 +15,18 @@ const SiteHeader = () => {
 
         <nav aria-label="Primary navigation">
           <ul>
-            {visibleNavLinks.map(({ to, name }) => (
-              <li
-                className={name === 'Personal' ? 'personal-nav-item' : undefined}
-                key={name}
-              >
+            {navLinks.map(({ to, name }) => (
+              <li key={name}>
                 <NavLink to={to}>
                   {name}
                 </NavLink>
               </li>
             ))}
+            <li className={`personal-nav-item${personalDiscovered ? " is-visible" : ""}`} aria-hidden={!personalDiscovered}>
+              <NavLink to="/personal" tabIndex={personalDiscovered ? 0 : -1}>
+                Personal
+              </NavLink>
+            </li>
           </ul>
         </nav>
 
@@ -42,11 +37,16 @@ const SiteHeader = () => {
         <details className="mobile-menu" ref={mobileMenuRef}>
           <summary>Menu</summary>
           <nav aria-label="Mobile navigation">
-            {visibleNavLinks.map(({ to, name }) => (
+            {navLinks.map(({ to, name }) => (
               <NavLink to={to} onClick={closeMobileMenu} key={name}>
                 {name}
               </NavLink>
             ))}
+            {personalDiscovered && (
+              <NavLink to="/personal" onClick={closeMobileMenu}>
+                Personal
+              </NavLink>
+            )}
             <NavLink to="/resume" onClick={closeMobileMenu}>
               Resume
             </NavLink>

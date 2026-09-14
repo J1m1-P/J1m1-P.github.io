@@ -3,7 +3,7 @@ import ContactLink from "../components/ContactLink.jsx";
 import CopyButton from "../components/CopyButton.jsx";
 import { site } from "../content/site.js";
 
-import OffTheClockTrigger from '../components/OffTheClockTrigger.jsx';
+import CatPersonalTrigger from '../components/CatPersonalTrigger.jsx';
 
 const contactPage = site.contact;
 const testimonialLoopDuration = 48000;
@@ -42,7 +42,7 @@ const TestimonialCard = ({
   </article>
 );
 
-const ContactPage = () => {
+const ContactPage = ({ onPersonalTransitionStarted }) => {
   const [selectedTestimonial, setSelectedTestimonial] = useState(null);
   const testimonialTrackRef = useRef(null);
   const availableLinks = contactPage.links.filter(
@@ -202,7 +202,7 @@ const ContactPage = () => {
             <p className="eyebrow contact-directory-label">
               {contactPage.getInTouchLabel}
             </p>
-            <OffTheClockTrigger />
+            <CatPersonalTrigger onPersonalTransitionStarted={onPersonalTransitionStarted} />
 
             <div className="contact-actions-row">
               <div className="contact-email-links">

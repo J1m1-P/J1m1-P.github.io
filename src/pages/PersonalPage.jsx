@@ -1,13 +1,6 @@
-import { useEffect } from 'react';
-import { unlockPersonalAccess } from '../hooks/usePersonalAccess.js';
-
 const PersonalPage = () => {
-  useEffect(() => {
-    unlockPersonalAccess();
-  }, []);
-
   return (
-    <section className='standard-page padding-x-lg'>
+    <section className='standard-page personal-page padding-x-lg'>
       <header className='page-heading'>
         <p className='eyebrow'>Personal</p>
         <h1>Off the Clock</h1>
