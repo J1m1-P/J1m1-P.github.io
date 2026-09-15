@@ -15,7 +15,7 @@ const AboutPage = () => (
           <p>{site.about.opportunity}</p>
           <PageButton
             className="about-projects-button"
-            text="View Projects"
+            text="View My Projects"
             to="/projects"
           />
         </header>

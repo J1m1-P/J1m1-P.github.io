@@ -1,4 +1,4 @@
-# Jimmy Pan — Portfolio
+# Jimmy Pan - Portfolio
 
 A React 19 and Vite portfolio with an interactive terminal, a data-driven
 project gallery, and hash-based routing for static hosting.
@@ -22,29 +22,29 @@ project.
 
 ## Project structure
 
-- `src/content/` — the three files intended for regular content editing
-- `src/components/` — small reusable interface pieces
-- `src/sections/` — the named sections that compose the homepage
-- `src/pages/` — one component for each navigable page
-- `public/` — images, documents, and other static files
+- `src/content/` - the three files intended for regular content editing
+- `src/components/` - small reusable interface pieces
+- `src/sections/` - the named sections that compose the homepage
+- `src/pages/` - one component for each navigable page
+- `public/` - images, documents, and other static files
 
 ### Where to edit
 
-- `src/content/site.js` — name, intro, resume, navigation, highlights, and skills
-- `src/content/projects.js` — portfolio project entries
-- `src/content/terminal.js` — terminal prompt, welcome text, shortcuts, and files
+- `src/content/site.js` - name, intro, resume, navigation, highlights, and skills
+- `src/content/projects.js` - portfolio project entries
+- `src/content/terminal.js` - terminal prompt, welcome text, shortcuts, and files
 
 Application behavior and layout live outside `content/`. Normal content changes
 should not require editing a component.
 
 ## Pages
 
-- `/` — introduction, terminal, and highlights
-- `/about` — profile, skills, and technology strip
-- `/projects` — complete project gallery
-- `/experience` — education and team experience
-- `/contact` — configured email and social links
-- `/resume` — public resume link or an unavailable state
+- `/` - introduction, terminal, and highlights
+- `/about` - profile, skills, and technology strip
+- `/projects` - complete project gallery
+- `/experience` - education and team experience
+- `/contact` - configured email and social links
+- `/resume` - public resume link or an unavailable state
 
 The header name returns Home. Page links and their order are controlled by
 `navLinks` in `src/content/site.js`.

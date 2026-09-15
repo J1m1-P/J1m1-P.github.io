@@ -1,10 +1,42 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { navLinks, site } from "../content/site.js";
+import { ContactIcon } from "./ContactLink.jsx";
+import CopyButton from "./CopyButton.jsx";
+
+const headerEmail = site.contact.links.find(({ name }) => name === "Email");
+const headerIconLinks = site.contact.links.filter(({ name }) =>
+  ["GitHub", "LinkedIn", "Resume"].includes(name),
+);
 
 const SiteHeader = ({ personalDiscovered }) => {
+  const [emailOpen, setEmailOpen] = useState(false);
   const mobileMenuRef = useRef(null);
+  const emailActionRef = useRef(null);
+  const emailButtonRef = useRef(null);
   const closeMobileMenu = () => mobileMenuRef.current?.removeAttribute("open");
+
+  useEffect(() => {
+    if (!emailOpen) return undefined;
+
+    const closeOnOutsideClick = (event) => {
+      if (!emailActionRef.current?.contains(event.target)) setEmailOpen(false);
+    };
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") {
+        setEmailOpen(false);
+        emailButtonRef.current?.focus();
+      }
+    };
+
+    document.addEventListener("pointerdown", closeOnOutsideClick);
+    document.addEventListener("keydown", closeOnEscape);
+
+    return () => {
+      document.removeEventListener("pointerdown", closeOnOutsideClick);
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [emailOpen]);
 
   return (
     <header className="site-header">
@@ -30,9 +62,68 @@ const SiteHeader = ({ personalDiscovered }) => {
           </ul>
         </nav>
 
-        <NavLink className="resume-link" to="/resume">
-          Resume
-        </NavLink>
+        <div className="header-actions">
+          {headerEmail && (
+            <div className="header-email-action" ref={emailActionRef}>
+              <button
+                className="header-icon-link"
+                type="button"
+                aria-label="Email"
+                aria-expanded={emailOpen}
+                aria-controls="header-email-popover"
+                title="Email"
+                onClick={() => setEmailOpen((isOpen) => !isOpen)}
+                ref={emailButtonRef}
+              >
+                <ContactIcon name={headerEmail.icon} />
+              </button>
+              {emailOpen && (
+                <div
+                  className="header-email-popover"
+                  id="header-email-popover"
+                  aria-label="Email actions"
+                >
+                  <a
+                    className="header-email-address"
+                    href={headerEmail.url}
+                    aria-label={`Email ${headerEmail.handle}`}
+                  >
+                    <ContactIcon name={headerEmail.icon} />
+                    <span>{headerEmail.handle}</span>
+                  </a>
+                  <CopyButton value={headerEmail.handle} label="email address" />
+                </div>
+              )}
+            </div>
+          )}
+          {headerIconLinks.map(({ name, url, icon, newTab }) => {
+            const iconContent = <ContactIcon name={icon} />;
+            const sharedProps = {
+              className: "header-icon-link",
+              "aria-label": name,
+              title: name,
+            };
+            const isInternal = url.startsWith("/") && !newTab;
+
+            return isInternal ? (
+              <NavLink {...sharedProps} to={url} key={name}>
+                {iconContent}
+              </NavLink>
+            ) : (
+              <a
+                {...sharedProps}
+                href={url}
+                {...(newTab && {
+                  target: "_blank",
+                  rel: "noopener noreferrer",
+                })}
+                key={name}
+              >
+                {iconContent}
+              </a>
+            );
+          })}
+        </div>
 
         <details className="mobile-menu" ref={mobileMenuRef}>
           <summary>Menu</summary>

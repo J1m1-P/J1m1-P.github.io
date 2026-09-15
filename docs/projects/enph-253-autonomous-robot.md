@@ -302,7 +302,7 @@ evidence of prioritizing essential scoring paths under a fixed deadline.
 4. **Late July: one robot.** Tower and movement behaviors were abstracted, separate
    task flows were consolidated into one sequence, optical pose crossed the ESP
    boundary, and Pi vision was integrated. A July 29 “scored 1 pt” commit records an
-   early integrated milestone—not the competition outcome.
+   early integrated milestone-not the competition outcome.
 5. **Final week: course integration.** Stepper acceleration, servo timing, locator,
    habitat, solar, detector, vision, tape heading, overshoot, and route offsets were
    tuned. Competition-day history includes merges, selective reverts, restored
@@ -451,11 +451,11 @@ and extensive tower, habitat, and solar sequences. Jimmy built foundational driv
 and communication systems and repeatedly integrated those contributions through
 the global sequence.
 
-Parallel ownership accelerated progress but made shared files—especially the
-sequence—integration hotspots. Branches, PRs, rebases, conflict resolution, and
+Parallel ownership accelerated progress but made shared files-especially the
+sequence-integration hotspots. Branches, PRs, rebases, conflict resolution, and
 known-good reversions were part of the engineering, not administrative overhead.
 
-## Competition result — verify
+## Competition result - verify
 
 The event date, format, and overall winner are verified, but Team 5's robot name,
 opening score, top-eight status, and final rank are not present in reviewed sources.
@@ -523,7 +523,7 @@ the best complete run.
    any one driver.
 2. **Personal ownership:** lead with firmware architecture/integration, then use the
    drivetrain and unified sequence/protocol as two concrete examples.
-3. **Difficult bug:** tell the optical sampling-bias story—instrument each boundary,
+3. **Difficult bug:** tell the optical sampling-bias story-instrument each boundary,
    rule out transport/parser faults, then use cumulative counts to prove behavior.
 4. **Controls problem:** discuss deriving the angular deadband from wheel tests and
    X-drive geometry, simulating alternatives, and documenting the remaining cutoff.

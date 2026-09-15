@@ -16,20 +16,20 @@ export const site = {
 
   about: {
     eyebrow: "About",
-    title: "From Circuits to Code",
+    title: "My Background",
     description:
-      "I’m an Engineering Physics student at UBC with a strong interest in embedded systems, firmware, and software that interacts with the physical world.",
+      "I'm a third-year Engineering Physics student at UBC who enjoys working with both software and hardware. I'm especially interested in firmware, embedded systems, controls, and anything that interacts with the physical world.",
     details:
-      "I enjoy solving problems that cross the boundary between hardware and software — especially when they involve real constraints, careful design, and reliable execution. Through projects like UBC Rocket, I work on systems that are meant to perform beyond the classroom.",
+      "I like projects where I get to think through design decisions, tradeoffs, and physical constraints with other people. I'm currently co-leading the UBC Rocket Firmware Team, and I'm also researching a personal project involving an FPV quadcopter with a custom STM32-based flight controller.",
     opportunity:
-      "I’m always open to opportunities where I can learn fast, contribute meaningfully, and help build ambitious technical projects.",
+      "I'm always looking to learn something new and contribute to interesting projects, so if anything I'm working on catches your interest, feel free to reach out!",
   },
 
   projects: {
     // Edit these three values to change the Projects page's small title,
     // main title, and introductory sentence.
     pageEyebrow: "projects",
-    pageTitle: "The Gallery",
+    pageTitle: "Things I've Built",
     pageDescription: "Courses teach the theory. Projects teach the rest.",
   },
 
@@ -40,9 +40,9 @@ export const site = {
 
   experience: {
     eyebrow: "Experience",
-    title: "Where I'm learning and building",
+    title: "Aside From Projects",
     description:
-      "Titles are nice. Experience matters more.",
+      "Titles are nice. What you do matters more.",
   },
 
   /**
@@ -54,9 +54,9 @@ export const site = {
    */
   contact: {
     eyebrow: "Contact",
-    title: "Let’s connect",
+    title: "Let's Connect",
     description:
-      "I’m always happy to talk about firmware, embedded systems, robotics, or interesting projects. Feel free to reach out.",
+      "I'm always happy to chat about firmware, embedded systems, robotics, or whatever interesting project you're working on. Feel free to reach out.",
     getInTouchLabel: "Get in touch",
     emptyMessage: "Contact links will be added soon.",
     footer: {
@@ -112,17 +112,17 @@ export const site = {
         },
         {
           quote:
-            "Jimmy communicates clearly, learns quickly, and consistently turns technical ideas into reliable results.",
-          name: "Your Name",
-          role: "Team Lead",
-          organization: "Organization",
+            "I worked with Jimmy on Crabby, our autonomous robot for the UBC Engineering Physics Robot Summer Competition. He was an incredibly dedicated teammate, often working late nights and weekends to keep the team on track while staying optimistic through difficult troubleshooting sessions. \n\n Jimmy also demonstrated strong firmware and software skills, developing many of our core drivers, including drivers for UART communication between our two ESP32s and Raspberry Pi, stepper motors, DC motors, encoders, and our custom tape-following sensors. He also developed a flexible task-sequencing platform that made tuning and modifying the robot's actions much easier.",
+          name: "Peter Lu",
+          role: "Integration Lead",
+          organization: "UBC Supermileage",
         },
         {
           quote:
-            "Dependable, collaborative, and always willing to dig deeper to understand how a system really works.",
-          name: "Your Name",
-          role: "Colleague",
-          organization: "Organization",
+            "I worked with Jimmy on the Embedded Software team at UBC Rocket, where I had the opportunity to oversee his work and see his strong technical ability, initiative, and ownership firsthand. He made significant contributions to our ground control software, using C++ and Qt to support real-time telemetry, vehicle configuration, data visualization, and communication with our rocket systems.\n \n Jimmy is a quick learner who approaches unfamiliar problems methodically and is willing to take on difficult debugging challenges. He is dependable, collaborative, and motivated to improve both the project and the team.",
+          name: "Steven Chen",
+          role: "Team Captain",
+          organization: "UBC Rocket",
         },
       ],
     },

@@ -15,7 +15,7 @@ const iconPaths = {
   ),
 };
 
-const ContactIcon = ({ name }) => {
+export const ContactIcon = ({ name }) => {
   if (name?.startsWith("/")) {
     return <img src={name} alt="" />;
   }

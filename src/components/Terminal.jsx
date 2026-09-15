@@ -66,6 +66,8 @@ const Terminal = () => {
     () => CAT_IMAGES[Math.floor(Math.random() * CAT_IMAGES.length)],
   );
   const [currentPath, setCurrentPath] = useState([]);
+  const [user, setUser] = useState(terminal.user);
+  const [host, setHost] = useState(terminal.host);
   const [history, setHistory] = useState([
     { id: 0, result: { text: terminal.welcome.join("\n") } },
   ]);
@@ -99,11 +101,16 @@ const Terminal = () => {
         break;
       case "pwd":
         result = {
-          text: `/home/${terminal.user}/${currentPath.join("/")}`.replace(/\/$/, ""),
+          text: `/home/${user}/${currentPath.join("/")}`.replace(/\/$/, ""),
         };
         break;
       case "whoami":
-        result = { text: terminal.user };
+        result = { text: user };
+        break;
+      case "meow":
+        setUser("Cat");
+        setHost("Meow");
+        result = { text: "" };
         break;
       case "ls": {
         const resolved = resolvePath(argument, currentPath);
@@ -166,6 +173,8 @@ const Terminal = () => {
       {
         id: nextId.current++,
         command: trimmed,
+        user,
+        host,
         path: pathLabel(currentPath),
         result,
       },
@@ -175,9 +184,18 @@ const Terminal = () => {
 
   return (
     <div className="terminal-shell">
-      <div className="terminal-cat" aria-hidden="true">
+      <button
+        className="terminal-cat"
+        type="button"
+        aria-label="Type meow in terminal"
+        onClick={() => {
+          if (input !== "") return;
+          setInput("meow");
+          inputRef.current?.focus();
+        }}
+      >
         <img src={catImage} alt="" />
-      </div>
+      </button>
 
       <section
         className="terminal-panel"
@@ -191,7 +209,7 @@ const Terminal = () => {
           <span />
         </div>
         <span>
-          {terminal.user}@{terminal.host}: {pathLabel(currentPath)}
+          {user}@{host}: {pathLabel(currentPath)}
         </span>
       </header>
 
@@ -201,7 +219,7 @@ const Terminal = () => {
             {entry.command && (
               <div>
                 <span className="terminal-prompt">
-                  {terminal.user}@{terminal.host}:{entry.path}$
+                  {entry.user}@{entry.host}:{entry.path}$
                 </span>{" "}
                 {entry.command}
               </div>
@@ -218,7 +236,7 @@ const Terminal = () => {
           }}
         >
           <label htmlFor="terminal-command">
-            {terminal.user}@{terminal.host}:{pathLabel(currentPath)}$
+            {user}@{host}:{pathLabel(currentPath)}$
           </label>
           <input
             id="terminal-command"

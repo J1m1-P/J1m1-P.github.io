@@ -1,12 +1,20 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const CopyButton = ({ value, label }) => {
   const [status, setStatus] = useState("idle");
+  const feedbackTimerRef = useRef(null);
+
+  useEffect(
+    () => () => clearTimeout(feedbackTimerRef.current),
+    [],
+  );
 
   const copyValue = async () => {
     try {
       await navigator.clipboard.writeText(value);
       setStatus("copied");
+      clearTimeout(feedbackTimerRef.current);
+      feedbackTimerRef.current = setTimeout(() => setStatus("idle"), 2000);
     } catch {
       setStatus("error");
     }

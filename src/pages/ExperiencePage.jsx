@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PageButton from "../components/PageButton.jsx";
 import { experiences } from "../content/experience.js";
 import { site } from "../content/site.js";
 
@@ -20,11 +21,16 @@ const ExperiencePage = () => {
   };
 
   return (
-    <section className="standard-page padding-x-lg">
+    <section className="standard-page experience-page padding-x-lg">
       <header className="page-heading">
         <p className="eyebrow">{site.experience.eyebrow}</p>
         <h1>{site.experience.title}</h1>
         <p>{site.experience.description}</p>
+        <PageButton
+          className="experience-contact-button"
+          text="View My Contact"
+          to="/contact"
+        />
       </header>
 
       <ol className="experience-timeline">
