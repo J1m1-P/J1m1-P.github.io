@@ -2,8 +2,8 @@
  * Portfolio projects are defined here and rendered throughout the site.
  *
  * To add a project, append one object with a unique `id`, a short `title`,
- * and a concise `summary`. `image`, `imageAlt`, `skills`, `github`, `website`,
- * `news`, `accent`, and `subprojects` are optional. Each subproject can have a
+ * a concise `summary`, and an `image`. `imageAlt`, `skills`, `github`, `website`,
+ * `news`, and `subprojects` are optional. Each subproject can have a
  * title and a short description. Add `images: [{ src, alt }, { src, alt }]`
  * to show two photos side by side; one image or no images also works.
  */
@@ -42,7 +42,7 @@ export const projects = [
         title: "Computer Vision",
         description: "A teammate and I built the vision pipeline that ran on the Raspberry Pi, training a YOLO model to detect the targets Crabby needed during autonomous tasks. Our final model reached about 99.9% precision, 98.1% recall, and 88.8% mAP50-95, and its detections were sent back to the embedded controllers to drive the robot's task logic.",
         images: [
-          { src: "/images/projects/crabby/CV.png", alt: "Crabby vision pipeline" },
+          { src: "/images/projects/crabby/vision-pipeline.png", alt: "Crabby vision pipeline" },
         ],
       },
     ],

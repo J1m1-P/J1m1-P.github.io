@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
-import LoadingScreen from "./components/LoadingScreen.jsx";
-import SiteHeader from "./components/SiteHeader.jsx";
+import LoadingScreen from "./components/layout/LoadingScreen.jsx";
+import RouteImagePreloader from "./components/layout/RouteImagePreloader.jsx";
+import SiteHeader from "./components/layout/SiteHeader.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
 import ExperiencePage from "./pages/ExperiencePage.jsx";
@@ -72,6 +73,7 @@ const App = () => {
     <>
       <LoadingScreen />
       <ScrollToTop />
+      <RouteImagePreloader />
       <SiteHeader personalDiscovered={personalDiscovery !== "hidden"} />
       <RouteTransition
         personalDiscovery={personalDiscovery}

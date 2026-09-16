@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import ContactLink from "../components/ContactLink.jsx";
-import CopyButton from "../components/CopyButton.jsx";
+import CopyButton from "../components/ui/CopyButton.jsx";
+import CatPersonalTrigger from "../features/contact/CatPersonalTrigger.jsx";
+import ContactLink from "../features/contact/ContactLink.jsx";
 import { site } from "../content/site.js";
-
-import CatPersonalTrigger from '../components/CatPersonalTrigger.jsx';
 
 const contactPage = site.contact;
 const testimonialLoopDuration = 48000;

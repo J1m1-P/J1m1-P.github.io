@@ -1,7 +1,9 @@
 import { site } from "../content/site.js";
-import PageButton from "../components/PageButton.jsx";
-// import SkillsSection from "../sections/SkillsSection.jsx";
-import TechnologyStrip from "../sections/TechnologyStrip.jsx";
+import PageButton from "../components/ui/PageButton.jsx";
+import SkillsSection from "../features/about/SkillsSection.jsx";
+import TechnologyStrip from "../features/about/TechnologyStrip.jsx";
+
+const showSkills = false;
 
 const AboutPage = () => (
   <>
@@ -20,13 +22,12 @@ const AboutPage = () => (
           />
         </header>
         <div className="about-photo">
-          <img src="/images/myself/AboutMePic.png" alt="Jimmy Pan" />
+          <img src="/images/about/profile.png" alt="Jimmy Pan" />
         </div>
       </div>
       <TechnologyStrip />
     </section>
-    {/* Re-enable this when the How I work section should return. */}
-    {/* <SkillsSection /> */}
+    {showSkills && <SkillsSection />}
   </>
 );
 

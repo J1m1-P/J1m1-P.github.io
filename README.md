@@ -1,85 +1,77 @@
-# Jimmy Pan - Portfolio
+# Jimmy Pan — Engineering Portfolio
 
-A React 19 and Vite portfolio with an interactive terminal, a data-driven
-project gallery, and hash-based routing for static hosting.
+A responsive portfolio for Jimmy Pan, an Engineering Physics student focused on
+firmware, embedded systems, controls, and robotics. The site is built as a
+single-page React application and deployed to GitHub Pages.
 
-## Development
+## Features
+
+- Interactive terminal with a small portfolio-focused command set
+- Data-driven project, experience, skills, testimonial, and contact content
+- Expandable project details and interactive experience timeline
+- Responsive desktop and mobile navigation
+- Route transitions, image preloading, loading feedback, and reduced-motion support
+- Discoverable Personal section with a custom cat interaction
+
+## Tech stack
+
+- React 19
+- React Router 7
+- Vite 7
+- Tailwind CSS 4 with project-specific CSS
+- ESLint 9
+- GitHub Actions and GitHub Pages
+
+## Local development
+
+Requires Node.js 20.19+ or 22.12+.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Before publishing, run:
+Vite prints the local development URL after startup.
+
+## Quality checks
 
 ```bash
 npm run lint
 npm run build
 ```
 
-There is no test suite or separate type-check command in this JavaScript
-project.
+The production bundle is written to `dist/`. This JavaScript project does not
+currently include a separate type-check command or automated test suite.
 
 ## Project structure
 
-- `src/content/` - the three files intended for regular content editing
-- `src/components/` - small reusable interface pieces
-- `src/sections/` - the named sections that compose the homepage
-- `src/pages/` - one component for each navigable page
-- `public/` - images, documents, and other static files
+```text
+src/
+├── components/
+│   ├── layout/       # Site-wide layout and route behavior
+│   └── ui/           # Reusable interface controls and icons
+├── content/          # Portfolio content and terminal data
+├── features/         # Components grouped by portfolio section
+├── pages/            # Route-level page components
+├── utils/            # Shared browser utilities
+├── App.jsx           # Routes and application-level state
+└── index.css         # Global styles and responsive rules
 
-### Where to edit
+public/images/
+├── about/            # Profile and About-section artwork
+├── cats/             # Cat interaction sprites and protected source assets
+├── experience/       # Experience timeline images
+├── home/             # Homepage background and intro artwork
+├── icons/            # Shared UI and technology icons
+└── projects/         # Project-specific media
+```
 
-- `src/content/site.js` - name, intro, resume, navigation, highlights, and skills
-- `src/content/projects.js` - portfolio project entries
-- `src/content/terminal.js` - terminal prompt, welcome text, shortcuts, and files
+Portfolio text and data are maintained in `src/content/`. Static image paths in
+those files resolve from `public/`.
 
-Application behavior and layout live outside `content/`. Normal content changes
-should not require editing a component.
+## Deployment
 
-## Pages
-
-- `/` - introduction, terminal, and highlights
-- `/about` - profile, skills, and technology strip
-- `/projects` - complete project gallery
-- `/experience` - education and team experience
-- `/contact` - configured email and social links
-- `/resume` - public resume link or an unavailable state
-
-The header name returns Home. Page links and their order are controlled by
-`navLinks` in `src/content/site.js`.
-
-## Add a portfolio project
-
-1. Append one object to `projects` in `src/content/projects.js`.
-2. Supply a unique `id`, `title`, and concise `summary`.
-3. Optionally add `skills`, `github`, `website`, and `news` URLs.
-4. To include a thumbnail, place it in `public/images/` and add `image`, a
-   useful `imageAlt`, and optionally `accent`.
-
-No component or route edits are needed. Array order controls display order.
-
-## Customize the terminal
-
-Edit `src/content/terminal.js`. A file is an object with `content` and an
-optional `url`. A folder is a plain object containing more files. Project text
-files are generated automatically from `projects.js`.
-
-Resume text and its public URL are kept in `src/content/site.js` so personal
-information has one clear home.
-
-Contact links and experience cards are also plain arrays in `site.js`. Empty
-contact URLs are hidden automatically.
-
-Supported commands are `help`, `ls`, `cd`, `cat`, `open`, `pwd`, `whoami`, and
-`clear`. This is an intentionally limited portfolio interface, not a real shell.
-
-## Design notes
-
-- `HashRouter` is intentional so nested routes work on static hosts without
-  server rewrite rules.
-- Homepage project cards and the all-projects page share `ProjectCard`.
-- Keep personal facts and project claims accurate; current project entries
-  originated from the unfinished site and should be verified before publishing.
-
-See [TODO.md](./TODO.md) for the remaining content and release work.
+Pushes to `main` trigger `.github/workflows/deploy.yml`, which installs locked
+dependencies, creates the production build, and deploys `dist/` to GitHub Pages.
+Hash-based routing is intentional so every route works on static hosting without
+server rewrite rules.

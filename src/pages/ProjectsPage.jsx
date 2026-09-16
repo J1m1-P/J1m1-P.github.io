@@ -1,5 +1,5 @@
-import PageButton from "../components/PageButton.jsx";
-import ProjectCard from "../components/ProjectCard.jsx";
+import PageButton from "../components/ui/PageButton.jsx";
+import ProjectCard from "../features/projects/ProjectCard.jsx";
 import { projects } from "../content/projects.js";
 import { site } from "../content/site.js";
 

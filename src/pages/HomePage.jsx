@@ -1,4 +1,4 @@
-import IntroSection from "../sections/IntroSection.jsx";
+import IntroSection from "../features/home/IntroSection.jsx";
 
 const HomePage = () => <IntroSection />;
 

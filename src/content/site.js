@@ -50,7 +50,6 @@ export const site = {
    * Add, remove, or reorder entries in links to update the page.
    * Set enabled: false to hide one without deleting it.
    *
-   * TODO: Replace the example email, profile URLs, and handles below.
    */
   contact: {
     eyebrow: "Contact",
@@ -67,7 +66,6 @@ export const site = {
     links: [
       {
         name: "Email",
-        type: "email",
         url: "mailto:jimmypan0410@gmail.com",
         handle: "jimmypan0410@gmail.com",
         description: "The best way to reach me",
@@ -77,7 +75,6 @@ export const site = {
       },
       {
         name: "GitHub",
-        type: "external",
         url: "https://github.com/j1m1-p",
         icon: "github",
         priority: "primary",
@@ -85,7 +82,6 @@ export const site = {
       },
       {
         name: "LinkedIn",
-        type: "external",
         url: "https://www.linkedin.com/in/jimmypan-ubc-enph",
         icon: "linkedin",
         priority: "primary",
@@ -93,7 +89,6 @@ export const site = {
       },
       {
         name: "Resume",
-        type: "document",
         url: "/resume",
         icon: "resume",
         priority: "primary",
@@ -152,10 +147,10 @@ export const navLinks = [
 ];
 
 export const introWords = [
-  { text: "Ideas", image: "/images/ideas.svg" },
-  { text: "Theory", image: "/images/concepts.svg" },
-  { text: "Systems", image: "/images/designs.svg" },
-  { text: "Code", image: "/images/code.svg" },
+  { text: "Ideas", image: "/images/home/intro/ideas.svg" },
+  { text: "Theory", image: "/images/home/intro/theory.svg" },
+  { text: "Systems", image: "/images/home/intro/systems.svg" },
+  { text: "Code", image: "/images/home/intro/code.svg" },
 ];
 
 export const highlights = [
@@ -179,19 +174,19 @@ export const highlights = [
 
 export const skills = [
   {
-    image: "/images/learning1.png",
+    image: "/images/about/adaptable-learner.png",
     title: "Adaptable Learner",
     description:
       "Quickly learning new concepts, adjusting to feedback, and improving through iteration.",
   },
   {
-    image: "/images/communication1.png",
+    image: "/images/about/clear-communication.png",
     title: "Clear Communication",
     description:
       "Explaining ideas, decisions, and progress clearly so everyone stays aligned.",
   },
   {
-    image: "/images/teamwork8.png",
+    image: "/images/about/collaboration.png",
     title: "Collaborative & Supportive",
     description:
       "Working closely with teammates, sharing knowledge, and contributing reliably.",
@@ -201,50 +196,50 @@ export const skills = [
 export const skillLogos = [
   {
     name: "Git",
-    image: "/images/skills/skill-logo-git.svg",
+    image: "/images/icons/technologies/git.svg",
   },
   {
     name: "GitHub",
-    image: "/images/skills/skill-logo-github.svg",
+    image: "/images/icons/technologies/github.svg",
   },
   {
     name: "C",
-    image: "/images/skills/skill-logo-c.svg",
+    image: "/images/icons/technologies/c.svg",
   },
   {
     name: "C++",
-    image: "/images/skills/skill-logo-cpp.svg",
+    image: "/images/icons/technologies/cpp.svg",
   },
   {
     name: "Python",
-    image: "/images/skills/skill-logo-python.svg",
+    image: "/images/icons/technologies/python.svg",
   },
   {
     name: "PlatformIO",
-    image: "/images/skills/skill-logo-platformio.svg",
+    image: "/images/icons/technologies/platformio.svg",
   },
   {
     name: "Arduino",
-    image: "/images/skills/skill-logo-arduino.svg",
+    image: "/images/icons/technologies/arduino.svg",
   },
   {
     name: "STM32",
-    image: "/images/skills/skill-logo-stm32.svg",
+    image: "/images/icons/technologies/stm32.svg",
   },
   {
     name: "ESP32",
-    image: "/images/skills/skill-logo-espressif.svg",
+    image: "/images/icons/technologies/espressif.svg",
   },
   {
     name: "Raspberry Pi",
-    image: "/images/skills/skill-logo-rpi.svg",
+    image: "/images/icons/technologies/rpi.svg",
   },
   {
     name: "Altium Designer",
-    image: "/images/skills/skill-logo-altium.svg",
+    image: "/images/icons/technologies/altium.svg",
   },
   {
     name: "KiCad",
-    image: "/images/skills/skill-logo-kicad.svg",
+    image: "/images/icons/technologies/kicad.svg",
   }
 ];

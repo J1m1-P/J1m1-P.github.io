@@ -1,6 +1,6 @@
 import { useState } from "react";
-import PageButton from "../components/PageButton.jsx";
-import { experiences } from "../content/experience.js";
+import PageButton from "../components/ui/PageButton.jsx";
+import { experiences } from "../content/experiences.js";
 import { site } from "../content/site.js";
 
 const ExperiencePage = () => {
@@ -67,13 +67,7 @@ const ExperiencePage = () => {
                 className="timeline-visual"
                 aria-hidden={!isActive}
               >
-                {entry.image ? (
-                  <img src={entry.image} alt={entry.imageAlt || entry.title} />
-                ) : (
-                  <div className="timeline-image-placeholder" aria-hidden="true">
-                    <span>Image placeholder</span>
-                  </div>
-                )}
+                <img src={entry.image} alt={entry.imageAlt || entry.title} />
               </figure>
             </li>
           );
