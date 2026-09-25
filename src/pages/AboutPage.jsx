@@ -1,9 +1,6 @@
 import { site } from "../content/site.js";
 import PageButton from "../components/ui/PageButton.jsx";
-import SkillsSection from "../features/about/SkillsSection.jsx";
 import TechnologyStrip from "../features/about/TechnologyStrip.jsx";
-
-const showSkills = false;
 
 const AboutPage = () => (
   <>
@@ -27,7 +24,6 @@ const AboutPage = () => (
       </div>
       <TechnologyStrip />
     </section>
-    {showSkills && <SkillsSection />}
   </>
 );
 

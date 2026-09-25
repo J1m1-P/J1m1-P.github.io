@@ -8,9 +8,7 @@ import ContactPage from "./pages/ContactPage.jsx";
 import ExperiencePage from "./pages/ExperiencePage.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import ProjectsPage from "./pages/ProjectsPage.jsx";
-import ResumePage from "./pages/ResumePage.jsx";
-
-import PersonalPage from './pages/PersonalPage.jsx';
+import PersonalPage from "./pages/PersonalPage.jsx";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -89,8 +87,7 @@ const App = () => {
             path="/contact"
             element={<ContactPage onPersonalTransitionStarted={() => setPersonalDiscovery("revealing")} />}
           />
-          <Route path="/resume" element={<ResumePage />} />
-          <Route path='/personal' element={<PersonalPage />} />
+          <Route path="/personal" element={<PersonalPage />} />
         </Routes>
       </main>
     </>

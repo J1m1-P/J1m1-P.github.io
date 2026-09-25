@@ -1,7 +1,13 @@
 /**
- * Edit personal details, page headings, resume information, and repeated cards
- * here. Project and terminal-specific content live beside this file.
+ * Edit personal details, page headings, contact links, and repeated cards here.
+ * Project, experience, and terminal-specific content live beside this file.
  */
+export const resume = {
+  fileName: "resume.pdf",
+  content: "Jimmy Pan's current engineering resume.",
+  url: "/images/resume/Resume_JimmyPan.pdf",
+};
+
 export const site = {
   name: "Jimmy Pan",
 
@@ -31,11 +37,6 @@ export const site = {
     pageEyebrow: "projects",
     pageTitle: "Things I've Built",
     pageDescription: "Courses teach the theory. Projects teach the rest.",
-  },
-
-  skills: {
-    eyebrow: "How I work",
-    title: "Skills beyond the toolset",
   },
 
   experience: {
@@ -89,7 +90,7 @@ export const site = {
       },
       {
         name: "Resume",
-        url: "/images/resume/Resume_JimmyPan.pdf",
+        url: resume.url,
         icon: "resume",
         priority: "primary",
         newTab: true,
@@ -123,20 +124,6 @@ export const site = {
     },
   },
 
-  resume: {
-    eyebrow: "Resume",
-    title: "My resume",
-    description:
-      "A concise overview of my education, experience, and technical work.",
-    emptyMessage: "My resume will be available here soon.",
-  },
-};
-
-export const resume = {
-  fileName: "resume.txt",
-  content:
-    "Resume link not configured yet.\n\nPlace your PDF in public/ and set `url` in src/content/site.js.",
-  url: "",
 };
 
 export const navLinks = [
@@ -151,46 +138,6 @@ export const introWords = [
   { text: "Theory", image: "/images/home/intro/theory.svg" },
   { text: "Systems", image: "/images/home/intro/systems.svg" },
   { text: "Code", image: "/images/home/intro/code.svg" },
-];
-
-export const highlights = [
-  {
-    value: "Engineering Physics",
-    label: "Engineering beyond one domain",
-  },
-  {
-    value: "UBC Rocket",
-    label: "Firmware and embedded systems",
-  },
-  {
-    value: "89.8%",
-    label: "Cumulative engineering average",
-  },
-  {
-    value: "Real Projects",
-    label: "From idea to deployment",
-  },
-];
-
-export const skills = [
-  {
-    image: "/images/about/adaptable-learner.png",
-    title: "Adaptable Learner",
-    description:
-      "Quickly learning new concepts, adjusting to feedback, and improving through iteration.",
-  },
-  {
-    image: "/images/about/clear-communication.png",
-    title: "Clear Communication",
-    description:
-      "Explaining ideas, decisions, and progress clearly so everyone stays aligned.",
-  },
-  {
-    image: "/images/about/collaboration.png",
-    title: "Collaborative & Supportive",
-    description:
-      "Working closely with teammates, sharing knowledge, and contributing reliably.",
-  },
 ];
 
 export const skillLogos = [

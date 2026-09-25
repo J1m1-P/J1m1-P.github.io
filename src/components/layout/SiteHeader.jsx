@@ -8,6 +8,7 @@ const headerEmail = site.contact.links.find(({ name }) => name === "Email");
 const headerIconLinks = site.contact.links.filter(({ name }) =>
   ["GitHub", "LinkedIn", "Resume"].includes(name),
 );
+const resumeLink = headerIconLinks.find(({ name }) => name === "Resume");
 
 const SiteHeader = ({ personalDiscovered }) => {
   const [emailOpen, setEmailOpen] = useState(false);
@@ -138,9 +139,16 @@ const SiteHeader = ({ personalDiscovered }) => {
                 Personal
               </NavLink>
             )}
-            <NavLink to="/resume" onClick={closeMobileMenu}>
-              Resume
-            </NavLink>
+            {resumeLink && (
+              <a
+                href={resumeLink.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={closeMobileMenu}
+              >
+                Resume
+              </a>
+            )}
           </nav>
         </details>
       </div>

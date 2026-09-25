@@ -1,9 +1,6 @@
 import PageButton from "../../components/ui/PageButton.jsx";
 import { introWords, site } from "../../content/site.js";
-import Highlights from "./Highlights.jsx";
 import Terminal from "./Terminal.jsx";
-
-const showHighlights = false;
 
 const IntroSection = () => {
   const words = [...introWords, ...introWords];
@@ -49,8 +46,6 @@ const IntroSection = () => {
           <Terminal />
         </div>
       </div>
-
-      {showHighlights && <Highlights />}
     </section>
   );
 };
