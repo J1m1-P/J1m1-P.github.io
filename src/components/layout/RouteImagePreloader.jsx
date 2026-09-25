@@ -23,10 +23,15 @@ const routeImages = {
   },
   "/projects": {
     priority: [
-      ...projects.flatMap(({ image }) => image ? [image] : []),
+      projects.find(({ tier, image }) => tier === "featured" && image)?.image,
       "/images/icons/arrow-right.svg",
+    ].filter(Boolean),
+    standard: [
+      ...projects
+        .filter(({ tier, image }) => tier !== "featured" && image)
+        .map(({ image }) => image),
+      "/images/icons/technologies/github.svg",
     ],
-    standard: ["/images/icons/technologies/github.svg"],
   },
   "/experience": {
     priority: ["/images/icons/arrow-right.svg"],
