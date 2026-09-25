@@ -1,3 +1,7 @@
+/**
+ * Timeline entries render in this order. To add one, copy the non-rendering
+ * template at the end of the file and add the completed object to this array.
+ */
 export const experiences = [
   {
     title: "Firmware Team Lead",
@@ -36,3 +40,15 @@ export const experiences = [
       "I started at UBC in general engineering, where I got my first real exposure to programming, electronics, and full-stack design. As I worked on more projects, I developed a strong interest in the field of firmware and embedded systems, which eventually led me to pursue Engineering Physics to build a deeper foundation in those areas.",
   },
 ];
+
+/*
+Experience entry template (copy into the array above; this block does not render):
+{
+  title: "Role or program",
+  organization: "Organization",
+  date: "Mon YYYY - Present",
+  image: "/images/experience/descriptive-file-name.webp",
+  imageAlt: "Concise description of the image",
+  summary: "What you did, learned, or contributed.",
+},
+*/
