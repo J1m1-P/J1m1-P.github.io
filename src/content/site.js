@@ -89,10 +89,10 @@ export const site = {
       },
       {
         name: "Resume",
-        url: "/resume",
+        url: "/images/resume/Resume_JimmyPan.pdf",
         icon: "resume",
         priority: "primary",
-        newTab: false,
+        newTab: true,
       },
     ],
     testimonials: {
