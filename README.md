@@ -60,6 +60,14 @@ Most routine content updates are intentionally data-driven:
 - Store project media under `public/images/projects/<project-name>/` and experience media under `public/images/experience/`. Paths referenced from content files begin with `/images/` and are case-sensitive on GitHub Pages.
 - Replace `public/images/resume/Resume_JimmyPan.pdf` to update the downloadable resume without changing its existing links. If the filename changes, update the single `resume.url` value in `src/content/site.js`.
 
+Images used across the site start preloading during the initial loading screen,
+including images inside expandable project details. The current page receives
+priority, and completed image requests are reused during navigation. The loader
+waits up to 2.8 seconds for page, font, and image readiness before finishing its
+animation; remaining downloads continue in the background. Content images are
+collected automatically from the project, experience, and technology lists;
+register new fixed image paths in `src/utils/siteImagePreloader.js`.
+
 The files under `public/images/cats/protected/` are retained source references for the site's cat interactions and should not be modified as part of general asset cleanup.
 
 ## Deployment

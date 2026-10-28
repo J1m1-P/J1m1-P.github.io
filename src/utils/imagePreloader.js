@@ -9,7 +9,10 @@ export const preloadImage = (source, fetchPriority = "auto") => {
   const existingRequest = imageRequests.get(cacheKey);
 
   if (existingRequest) {
-    if (fetchPriority === "high") existingRequest.image.fetchPriority = "high";
+    const priorityRank = { low: 0, auto: 1, high: 2 };
+    if (priorityRank[fetchPriority] > priorityRank[existingRequest.image.fetchPriority]) {
+      existingRequest.image.fetchPriority = fetchPriority;
+    }
     return existingRequest.promise;
   }
 

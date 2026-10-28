@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { site } from "../../content/site.js";
+import { preloadSiteImages } from "../../utils/siteImagePreloader.js";
 
 const LOADING_TIMINGS = {
   // All delays below are measured in milliseconds.
@@ -8,21 +9,21 @@ const LOADING_TIMINGS = {
     cleanupDelay: 140, // Time before the reduced-motion screen is removed.
   },
   progress: {
-    initialDelay: 70, // Time before the first progress update.
+    initialDelay: 50, // Time before the first progress update.
     phases: [
       // `until` is a progress percentage; `step` is percentage points;
       // `delay` is the random wait between progress updates.
-      { until: 60, step: [6, 12], delay: [38, 70] },
-      { until: 85, step: [3, 6], delay: [60, 110] },
-      { until: 95, step: [1, 3], delay: [85, 155] },
-      { until: 99, step: [1, 1], delay: [155, 215] },
+      { until: 60, step: [6, 12], delay: [28, 52] },
+      { until: 85, step: [3, 6], delay: [45, 82] },
+      { until: 95, step: [1, 3], delay: [64, 116] },
+      { until: 99, step: [1, 1], delay: [116, 161] },
     ],
   },
-  readinessTimeout: 2800, // Maximum wait for the page and fonts to be ready.
+  readinessTimeout: 2800, // Maximum wait for the page, fonts, and site images.
   completion: {
-    readyDelay: 250, // Time showing 100%/"Ready" before fading out.
-    exitDelay: 425, // Time before the loading screen starts fading out.
-    cleanupDelay: 675, // Time before removal; includes the 350 ms CSS fade.
+    readyDelay: 175, // Time before progress reaches 100%/"Ready".
+    exitDelay: 300, // Time before the loading screen starts fading out.
+    cleanupDelay: 650, // Time before removal; includes the 350 ms CSS fade.
   },
 };
 
@@ -48,6 +49,9 @@ const LoadingScreen = () => {
     };
 
     document.body.style.overflow = "hidden";
+    // Start all site image requests even when reduced motion skips the intro.
+    // Shared requests remain cached and keep loading after the readiness timeout.
+    const imagesReady = preloadSiteImages();
 
     if (reducedMotion) {
       schedule(() => setProgress(100), 0);
@@ -113,7 +117,7 @@ const LoadingScreen = () => {
       );
 
       Promise.race([
-        Promise.all([windowReady, fontsReady]),
+        Promise.all([windowReady, fontsReady, imagesReady]),
         readinessTimeout,
       ]).then(() => {
         if (cancelled) return;

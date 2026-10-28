@@ -60,6 +60,8 @@ export const projects = [
     id: "ghost-shell-linux-desktop-environment",
     tier: "secondary",
     title: "Ghost Shell - Custom Linux Desktop",
+    image: "/images/projects/ghost-shell/ghost-shell-cover.png",
+    imageAlt: "Ghost Shell desktop with Hyprland, Waybar, and Rofi",
     summary:
       "I built Ghost Shell as a unified Linux desktop configuration rather than a collection of unrelated dotfiles. It brings together the window manager, status bar, notifications, launcher, session controls, lock/idle behavior, terminal, and file manager into one consistent workflow, while keeping the configuration organized and reproducible.",
     compactSummary:

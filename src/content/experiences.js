@@ -10,7 +10,7 @@ export const experiences = [
     image: "/images/experience/firmware-team-lead2.png",
     imageAlt: "Firmware work with UBC Rocket",
     summary:
-      "Recently promoted to Firmware Co-Lead, where I help recruit and interview new members, develop firmware lessons for the team, and work with returning members to refactor last year’s codebase into something cleaner and easier to build on. \n\n I’m also continuing to expand my embedded systems knowledge through STM32 development, motor-control interfaces, communication protocols, and testing. Recently, I’ve been diving deeper into Kalman filters, state estimation, and sensor fusion to better understand how noisy sensor data can be turned into useful information for controls and telemetry systems.",
+      "As Firmware Lead at UBC Rocket, I lead firmware development across our thrust-vectoring and multi-stage rocket projects, coordinating technical priorities, reviewing contributions, and mentoring new members. I also develop onboarding materials and technical lessons to help new developers get hands-on experience with embedded systems. \n\n On the technical side, I'm leading the modernization of our STM32-based flight-control firmware, including restructuring the codebase into modular hardware, service, and application layers, improving CMake build workflows, and introducing GitHub CI. My work also involves dual-core STM32H745 development, peripheral integration, FreeRTOS, and communication interfaces. I collaborate closely with the Controls and Avionics teams to translate system requirements into reliable, testable firmware for upcoming flight tests.",
   },
   {
     title: "Embedded Firmware Developer",
@@ -19,7 +19,7 @@ export const experiences = [
     image: "/images/experience/embedded-firmware-developer2.jpg",
     imageAlt: "Embedded firmware development with UBC Rocket",
     summary: 
-      "I worked on UBC Rocket's embedded and ground-control software, mainly in C++ and Qt 6, supporting real-time telemetry, vehicle configuration, data visualization, and radio communication with the rocket. A lot of my work involved integrating sensor data, debugging communication between systems, and improving the ground station so the team could monitor and configure the vehicle more reliably during testing. On the embedded side, I also refactored a servo driver, contributed to the early implementation of DShot communication for an ESC, and gained some hands-on exposure to RTOS-based firmware.",
+      "As an Embedded Firmware Developer at UBC Rocket, I worked on both flight-controller firmware and ground-control software for our thrust-vectoring rocket. I developed and improved our C++/Qt 6 ground control station, supporting real-time telemetry visualization, vehicle configuration, radio communication, and sensor-data monitoring during testing. \n\n On the embedded side, I developed and refactored STM32 peripheral drivers, including servo-control interfaces, and contributed to early DShot communication development for electronic speed controllers. I also worked with embedded communication protocols, sensor integration, and debugging hardware-software interactions. Through this role, I gained hands-on experience building real-time embedded systems and integrating firmware with the broader vehicle architecture.",
   },
   {
     title: "Engineering Physics",
