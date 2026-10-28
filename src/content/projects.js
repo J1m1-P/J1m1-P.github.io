@@ -57,6 +57,30 @@ export const projects = [
     ],
   },
   {
+    id: "ubc-rocket-ulysses-gcs",
+    tier: "secondary",
+    title: "Ulysses - Rocket Ground Control Station",
+    image: "/images/projects/ulysses-ground-control-station/ulysses-GCS-cover.png",
+    imageAlt: "Ulysses ground control station with telemetry and configuration panels",
+    summary:
+      "I developed Ulysses, a C++/Qt 6 ground control station for UBC Rocket's thrust-vectoring vehicle, bringing together real-time telemetry, radio communication, vehicle configuration, and flight diagnostics. The application combines a C++ backend for serial communication and packet processing with a modular QML interface featuring dedicated flight, tuning, mapping, and diagnostics views. I also worked on CMake-based builds and Linux packaging to make the application easier to deploy and use during testing.",
+    compactSummary:
+      "A C++/Qt 6 ground control station for UBC Rocket's thrust-vectoring vehicle, featuring real-time telemetry, interactive 3D visualization, radio communication, PID tuning, and flight-data logging.",
+    skills: ["C++", "Qt 6 / QML", "CMake", "ProtoBuf", "Linux Deployment"],
+    github: "https://github.com/UBC-Rocket/thrust_vectoring_consolidated/tree/main/embedded-software/ground-station", 
+    detailsLayout: "two-column-grid",
+    subprojects: [
+      {
+        title: "Telemetry & Visualization",
+        description: "Implemented real-time telemetry decoding using COBS-framed Protocol Buffers, integrating flight-state, position, attitude, and motor data into interactive QML dashboards. Built 3D rocket orientation visualization, sensor-health alerts, UWB positioning displays, and CSV telemetry logging for post-test analysis."
+      }, 
+      {
+        title: "Communication & Control", 
+        description: "Developed a Qt SerialPort communication interface supporting RFD900x radio detection, configurable RX/TX channels, and binary command transmission. Integrated flight-state commands, PID gain tuning, vehicle configuration, heartbeat messages, and reusable controller presets to support ground-based testing and control."
+      }
+    ]
+  },
+  {
     id: "ghost-shell-linux-desktop-environment",
     tier: "secondary",
     title: "Ghost Shell - Custom Linux Desktop",
@@ -66,7 +90,7 @@ export const projects = [
       "I built Ghost Shell as a unified Linux desktop configuration rather than a collection of unrelated dotfiles. It brings together the window manager, status bar, notifications, launcher, session controls, lock/idle behavior, terminal, and file manager into one consistent workflow, while keeping the configuration organized and reproducible.",
     compactSummary:
       "A custom Ubuntu + Hyprland desktop built as a cohesive, reproducible Linux environment with automated configuration, integrated system tools, and a consistent visual design.",
-    skills: ["Linux", "Hyprland", "Bash", "systemd", "Wayland"],
+    skills: ["Linux", "systemd", "Hyprland", "Bash", "Kitty", "Wayland"],
     github: "https://github.com/J1m1-P/rice-config",
     detailsLayout: "two-column-grid",
     subprojects: [
@@ -91,7 +115,7 @@ export const projects = [
       "A responsive, dark-themed portfolio built with React to showcase my engineering work through reusable components, interactive project details, and custom animations. Developed iteratively with Codex assisting implementation and refactoring while I directed the design, content, and interactions.",
     compactSummary:
       "A responsive, dark-themed portfolio built with React, reusable components, and custom interactive details.",
-    skills: ["React", "JavaScript", "CSS", "UI/UX Design", "Frontend Development", "AI-Assisted Development"],
+    skills: ["React", "Three.js", "JavaScript", "Tailwind CSS", "UI/UX Design"],
     github: "https://github.com/J1m1-P/J1m1-P.github.io",
     website: "https://j1m1-p.github.io/",
     detailsLayout: "two-column-grid",

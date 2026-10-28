@@ -66,7 +66,7 @@ const SecondaryProjectCard = ({
       ? { rootMargin: "0px 0px 5%", threshold: 0.05 }
       : { rootMargin: "0px 0px -6%", threshold: 0.12 },
   );
-  const visibleSkills = project.skills?.slice(0, project.visibleSkillCount ?? 4);
+  const visibleSkills = project.skills?.slice(0, project.visibleSkillCount ?? 6);
   const hasDetails = Boolean(project.summary || project.subprojects?.length);
 
   return (

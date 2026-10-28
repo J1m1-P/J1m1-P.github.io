@@ -5,7 +5,7 @@
 export const resume = {
   fileName: "resume.pdf",
   content: "Jimmy Pan's current engineering resume.",
-  url: "/images/resume/Resume_JimmyPan.pdf",
+  url: "/images/resume/Jimmy_Resume.pdf",
 };
 
 export const site = {
