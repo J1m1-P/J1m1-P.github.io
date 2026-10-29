@@ -17,6 +17,16 @@ const ProjectsPage = () => {
     secondaryProjectRows.push(secondaryProjects.slice(index, index + 2));
   }
 
+  const navigateToProject = (projectId) => {
+    setExpandedProjectId(projectId);
+
+    requestAnimationFrame(() => {
+      const target = document.getElementById(projectId);
+      target?.focus({ preventScroll: true });
+      target?.scrollIntoView({ block: "start" });
+    });
+  };
+
   return (
     <section className="projects-page padding-x-lg">
       <header className="page-heading">
@@ -38,7 +48,11 @@ const ProjectsPage = () => {
 
         <div className="projects-grid">
           {featuredProjects.map((project) => (
-            <ProjectCard project={project} key={project.id} />
+            <ProjectCard
+              project={project}
+              key={project.id}
+              onProjectNavigate={navigateToProject}
+            />
           ))}
         </div>
       </section>

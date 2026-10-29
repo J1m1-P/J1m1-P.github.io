@@ -71,6 +71,8 @@ const SecondaryProjectCard = ({
 
   return (
     <article
+      id={project.id}
+      tabIndex={-1}
       ref={cardRef}
       className={`secondary-project-card${isVisible ? " is-visible" : ""}${isExpanded ? " is-expanded" : ""}`}
       style={{ "--reveal-delay": `${Math.min(revealIndex, 3) * 90}ms` }}

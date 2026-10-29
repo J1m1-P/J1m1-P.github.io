@@ -893,6 +893,7 @@ a {
 }
 
 .project-links a,
+.subproject-link,
 .project-expand-button {
   display: inline-flex;
   min-height: 2.4rem;
@@ -911,6 +912,7 @@ a {
 }
 
 .project-links a:hover,
+.subproject-link:hover,
 .project-expand-button:hover {
   border-color: #657d95;
   background: #151c23;
@@ -930,7 +932,8 @@ a {
   cursor: pointer;
 }
 
-.project-expand-button svg {
+.project-expand-button svg,
+.subproject-link svg {
   width: 1.1rem;
   height: 1.1rem;
   fill: none;
@@ -1044,6 +1047,17 @@ a {
   color: #a9bfd3;
   font-size: 0.9rem;
   line-height: 1.55;
+}
+
+.subproject-link {
+  max-width: 100%;
+  margin-top: 1rem;
+  line-height: 1.35;
+  cursor: pointer;
+}
+
+.subproject-link svg {
+  flex-shrink: 0;
 }
 
 .projects-page,

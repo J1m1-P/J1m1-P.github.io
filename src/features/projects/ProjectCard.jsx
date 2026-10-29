@@ -37,7 +37,7 @@ const ProjectLinks = ({ github, githubVisible = true, website, news }) => {
   );
 };
 
-const Subproject = ({ subproject }) => {
+const Subproject = ({ subproject, onProjectNavigate }) => {
   const images = subproject.images ?? [];
 
   return (
@@ -45,6 +45,18 @@ const Subproject = ({ subproject }) => {
       <div className="subproject-copy">
         <h3>{subproject.title}</h3>
         <p>{subproject.description}</p>
+        {subproject.projectLink && (
+          <button
+            className="subproject-link"
+            type="button"
+            onClick={() => onProjectNavigate(subproject.projectLink.projectId)}
+          >
+            <span>{subproject.projectLink.label}</span>
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M5 12h14m-6-6 6 6-6 6" />
+            </svg>
+          </button>
+        )}
       </div>
       {images.length > 0 && (
         <div className={`subproject-images${images.length > 1 ? " subproject-images--pair" : ""}`}>
@@ -64,13 +76,13 @@ const Subproject = ({ subproject }) => {
   );
 };
 
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({ project, onProjectNavigate }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const detailsId = useId();
   const hasSubprojects = project.subprojects?.length > 0;
 
   return (
-    <article className="project-card">
+    <article id={project.id} className="project-card" tabIndex={-1}>
       <ProjectImage
         image={project.image}
         imageAlt={project.imageAlt}
@@ -130,7 +142,11 @@ const ProjectCard = ({ project }) => {
               aria-label={`${project.title} components`}
             >
               {project.subprojects.map((subproject) => (
-                <Subproject key={subproject.title} subproject={subproject} />
+                <Subproject
+                  key={subproject.title}
+                  subproject={subproject}
+                  onProjectNavigate={onProjectNavigate}
+                />
               ))}
             </div>
           </div>
