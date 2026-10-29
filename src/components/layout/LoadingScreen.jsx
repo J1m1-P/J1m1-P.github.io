@@ -5,25 +5,25 @@ import { preloadSiteImages } from "../../utils/siteImagePreloader.js";
 const LOADING_TIMINGS = {
   // All delays below are measured in milliseconds.
   reducedMotion: {
-    exitDelay: 80, // Time before the reduced-motion screen starts fading out.
-    cleanupDelay: 140, // Time before the reduced-motion screen is removed.
+    exitDelay: 65, // Time before the reduced-motion screen starts fading out.
+    cleanupDelay: 113, // Time before the reduced-motion screen is removed.
   },
   progress: {
-    initialDelay: 50, // Time before the first progress update.
+    initialDelay: 41, // Time before the first progress update.
     phases: [
       // `until` is a progress percentage; `step` is percentage points;
       // `delay` is the random wait between progress updates.
-      { until: 60, step: [6, 12], delay: [28, 52] },
-      { until: 85, step: [3, 6], delay: [45, 82] },
-      { until: 95, step: [1, 3], delay: [64, 116] },
-      { until: 99, step: [1, 1], delay: [116, 161] },
+      { until: 60, step: [6, 12], delay: [23, 42] },
+      { until: 85, step: [3, 6], delay: [37, 67] },
+      { until: 95, step: [1, 3], delay: [52, 94] },
+      { until: 99, step: [1, 1], delay: [94, 131] },
     ],
   },
-  readinessTimeout: 2800, // Maximum wait for the page, fonts, and site images.
+  readinessTimeout: 2268, // Maximum wait for the page, fonts, and site images.
   completion: {
-    readyDelay: 175, // Time before progress reaches 100%/"Ready".
-    exitDelay: 300, // Time before the loading screen starts fading out.
-    cleanupDelay: 650, // Time before removal; includes the 350 ms CSS fade.
+    readyDelay: 142, // Time before progress reaches 100%/"Ready".
+    exitDelay: 243, // Time before the loading screen starts fading out.
+    cleanupDelay: 527, // Time before removal; includes the 284 ms CSS fade.
   },
 };
 

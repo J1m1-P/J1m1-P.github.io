@@ -87,7 +87,7 @@ a {
   overflow: hidden;
   background: #050505;
   opacity: 1;
-  transition: opacity 350ms ease;
+  transition: opacity 284ms ease;
 }
 
 .loading-screen::before {
@@ -145,7 +145,7 @@ a {
   background: #d9ecff;
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 80ms linear;
+  transition: transform 65ms linear;
 }
 
 .loading-status {
