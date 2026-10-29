@@ -1,5 +1,7 @@
-import { useId, useState } from "react";
+import { useId } from "react";
+import ProjectGalleryButton from "./ProjectGalleryButton.jsx";
 import ProjectImageLightbox from "./ProjectImageLightbox.jsx";
+import ProjectStatus from "./ProjectStatus.jsx";
 
 const ProjectImage = ({ image, imageAlt, imageBackdrop, title }) => (
   <ProjectImageLightbox
@@ -9,10 +11,10 @@ const ProjectImage = ({ image, imageAlt, imageBackdrop, title }) => (
   />
 );
 
-const ProjectLinks = ({ github, githubVisible = true, website, news }) => {
+const ProjectLinks = ({ github, githubVisible = true, website, news, extraPic, title }) => {
   const visibleGithub = githubVisible ? github : null;
 
-  if (!visibleGithub && !website && !news) return null;
+  if (!visibleGithub && !website && !news && !extraPic?.length) return null;
 
   return (
     <div className="project-links" aria-label="Project links">
@@ -33,6 +35,7 @@ const ProjectLinks = ({ github, githubVisible = true, website, news }) => {
           News <span aria-hidden="true">↗</span>
         </a>
       )}
+      <ProjectGalleryButton extraPic={extraPic} title={title} />
     </div>
   );
 };
@@ -45,17 +48,22 @@ const Subproject = ({ subproject, onProjectNavigate }) => {
       <div className="subproject-copy">
         <h3>{subproject.title}</h3>
         <p>{subproject.description}</p>
-        {subproject.projectLink && (
-          <button
-            className="subproject-link"
-            type="button"
-            onClick={() => onProjectNavigate(subproject.projectLink.projectId)}
-          >
-            <span>{subproject.projectLink.label}</span>
-            <svg aria-hidden="true" viewBox="0 0 24 24">
-              <path d="M5 12h14m-6-6 6 6-6 6" />
-            </svg>
-          </button>
+        {(subproject.projectLink || subproject.extraPic?.length > 0) && (
+          <div className="subproject-actions">
+            {subproject.projectLink && (
+              <button
+                className="subproject-link"
+                type="button"
+                onClick={() => onProjectNavigate(subproject.projectLink.projectId)}
+              >
+                <span>{subproject.projectLink.label}</span>
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="M5 12h14m-6-6 6 6-6 6" />
+                </svg>
+              </button>
+            )}
+            <ProjectGalleryButton extraPic={subproject.extraPic} title={subproject.title} />
+          </div>
         )}
       </div>
       {images.length > 0 && (
@@ -76,8 +84,7 @@ const Subproject = ({ subproject, onProjectNavigate }) => {
   );
 };
 
-const ProjectCard = ({ project, onProjectNavigate }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+const ProjectCard = ({ project, onProjectNavigate, isExpanded, onToggleDetails }) => {
   const detailsId = useId();
   const hasSubprojects = project.subprojects?.length > 0;
 
@@ -92,7 +99,10 @@ const ProjectCard = ({ project, onProjectNavigate }) => {
 
       <div className="project-content">
         <div className="project-card-main">
-          <h2>{project.title}</h2>
+          <div className="project-card-heading">
+            <h2>{project.title}</h2>
+            <ProjectStatus status={project.status} />
+          </div>
           <p>{project.summary}</p>
         </div>
 
@@ -110,6 +120,8 @@ const ProjectCard = ({ project, onProjectNavigate }) => {
             githubVisible={project.githubVisible}
             website={project.website}
             news={project.news}
+            extraPic={project.extraPic}
+            title={project.title}
           />
           {hasSubprojects && (
             <button
@@ -118,7 +130,7 @@ const ProjectCard = ({ project, onProjectNavigate }) => {
               aria-expanded={isExpanded}
               aria-controls={detailsId}
               aria-label={`${isExpanded ? "Collapse" : "Explore"} ${project.title} details`}
-              onClick={() => setIsExpanded((expanded) => !expanded)}
+              onClick={onToggleDetails}
             >
               <span>{isExpanded ? "Hide Details" : "More Details"}</span>
               <svg aria-hidden="true" viewBox="0 0 24 24">

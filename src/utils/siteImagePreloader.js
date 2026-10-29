@@ -31,8 +31,8 @@ export const routeImages = {
         extraPic.filter((item) => !isVideoMedia(item)).map(({ src }) => src),
       ),
       ...projects.flatMap(({ subprojects = [] }) =>
-        subprojects.flatMap(({ images = [] }) =>
-          images.map(({ src }) => src),
+        subprojects.flatMap(({ images = [], extraPic = [] }) =>
+          [...images, ...extraPic].filter((item) => !isVideoMedia(item)).map(({ src }) => src),
         ),
       ),
       "/images/icons/technologies/github.svg",

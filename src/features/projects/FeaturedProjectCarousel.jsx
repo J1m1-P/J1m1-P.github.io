@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ProjectCard from "./ProjectCard.jsx";
 
 const slideDuration = 420;
+const autoplayDuration = 15000;
+const manualPauseDuration = 30000;
 
 const innerChevron = "M3 4.5 7 5.3 19 27.5Q19.3 28 19 28.5L7 50.7 3 51.5 14.5 28Z";
 const middleChevron = "M15 8.5 19 9.3 31 27.5Q31.3 28 31 28.5L19 46.7 15 47.5 26.5 28Z";
@@ -22,6 +24,63 @@ const FeaturedProjectCarousel = ({ projects, onProjectNavigate }) => {
     direction: 1,
     phase: "idle",
   });
+  const progressRef = useRef(null);
+  const timerAnimationRef = useRef(null);
+  const manualResumeTimerRef = useRef(null);
+  const [isAutoplayEnabled] = useState(
+    () => !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+  );
+  const [isManuallyPaused, setIsManuallyPaused] = useState(false);
+  const [expandedProjectIds, setExpandedProjectIds] = useState([]);
+  const [isPageVisible, setIsPageVisible] = useState(() => !document.hidden);
+  const isPlaying = isAutoplayEnabled && !isManuallyPaused
+    && !expandedProjectIds.includes(projects[activeIndex]?.id);
+
+  useEffect(() => () => window.clearTimeout(manualResumeTimerRef.current), []);
+
+  useEffect(() => {
+    const updateVisibility = () => setIsPageVisible(!document.hidden);
+    document.addEventListener("visibilitychange", updateVisibility);
+    return () => document.removeEventListener("visibilitychange", updateVisibility);
+  }, []);
+
+  useEffect(() => {
+    if (phase !== "idle" || projects.length < 2) return;
+
+    // The fill animation is also the clock, so pausing keeps them in sync.
+    const animation = progressRef.current.animate(
+      [{ transform: "scaleX(0)" }, { transform: "scaleX(1)" }],
+      { duration: autoplayDuration, easing: "linear", fill: "forwards" },
+    );
+    animation.pause();
+    timerAnimationRef.current = animation;
+    animation.onfinish = () => {
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      setCarousel((current) => ({
+        activeIndex: (current.activeIndex + 1) % projects.length,
+        fromIndex: current.activeIndex,
+        direction: 1,
+        phase: reducedMotion ? "idle" : "prepare",
+      }));
+    };
+
+    return () => {
+      animation.onfinish = null;
+      animation.cancel();
+      timerAnimationRef.current = null;
+    };
+  }, [activeIndex, phase, projects.length]);
+
+  useEffect(() => {
+    const animation = timerAnimationRef.current;
+    if (!animation) return;
+
+    if (isPlaying && isPageVisible) {
+      animation.play();
+    } else {
+      animation.pause();
+    }
+  }, [activeIndex, phase, projects.length, isPlaying, isPageVisible]);
 
   useEffect(() => {
     if (phase === "prepare") {
@@ -53,7 +112,14 @@ const FeaturedProjectCarousel = ({ projects, onProjectNavigate }) => {
   const visibleIndex = phase === "prepare" ? fromIndex : activeIndex;
 
   const selectProject = (nextIndex, requestedDirection) => {
-    if (phase !== "idle" || nextIndex === activeIndex) return;
+    window.clearTimeout(manualResumeTimerRef.current);
+    setIsManuallyPaused(true);
+    manualResumeTimerRef.current = window.setTimeout(() => {
+      setIsManuallyPaused(false);
+    }, manualPauseDuration);
+
+    if (phase !== "idle") return;
+    if (nextIndex === activeIndex) return;
 
     const forwardDistance = (nextIndex - activeIndex + projects.length) % projects.length;
     const nextDirection = requestedDirection ?? (forwardDistance <= projects.length / 2 ? 1 : -1);
@@ -93,13 +159,18 @@ const FeaturedProjectCarousel = ({ projects, onProjectNavigate }) => {
         </div>
 
         {projects.length > 1 && (
-          <p className="featured-project-position" aria-live="polite" aria-atomic="true">
-            <span className="sr-only">{projects[visibleIndex].title}, project </span>
-            {String(visibleIndex + 1).padStart(2, "0")}
-            <span aria-hidden="true"> / </span>
-            <span className="sr-only"> of </span>
-            <span>{String(projects.length).padStart(2, "0")}</span>
-          </p>
+          <div className="featured-project-timing">
+            <p className="featured-project-position" aria-live={isPlaying ? "off" : "polite"} aria-atomic="true">
+              <span className="sr-only">{projects[visibleIndex].title}, project </span>
+              {String(visibleIndex + 1).padStart(2, "0")}
+              <span aria-hidden="true"> / </span>
+              <span className="sr-only"> of </span>
+              <span>{String(projects.length).padStart(2, "0")}</span>
+            </p>
+            <span className="featured-project-progress" aria-hidden="true">
+              <span className="featured-project-progress-fill" ref={progressRef} />
+            </span>
+          </div>
         )}
       </div>
 
@@ -141,7 +212,16 @@ const FeaturedProjectCarousel = ({ projects, onProjectNavigate }) => {
                 aria-hidden={index !== visibleIndex}
                 inert={index !== visibleIndex}
               >
-                <ProjectCard project={project} onProjectNavigate={onProjectNavigate} />
+                <ProjectCard
+                  project={project}
+                  onProjectNavigate={onProjectNavigate}
+                  isExpanded={expandedProjectIds.includes(project.id)}
+                  onToggleDetails={() => setExpandedProjectIds((current) => (
+                    current.includes(project.id)
+                      ? current.filter((id) => id !== project.id)
+                      : [...current, project.id]
+                  ))}
+                />
               </div>
             ))}
           </div>

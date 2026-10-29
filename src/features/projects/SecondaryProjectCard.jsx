@@ -1,5 +1,7 @@
 import useScrollReveal from "../../hooks/useScrollReveal.js";
+import ProjectGalleryButton from "./ProjectGalleryButton.jsx";
 import ProjectImageLightbox from "./ProjectImageLightbox.jsx";
+import ProjectStatus from "./ProjectStatus.jsx";
 
 const ExternalIcon = ({ type }) => {
   if (type === "github") {
@@ -40,24 +42,7 @@ const CompactLinks = ({ project }) => {
           <span>{label}</span>
         </a>
       ))}
-      {project.extraPic?.length > 0 && (
-        <ProjectImageLightbox
-          images={project.extraPic}
-          alt={project.title}
-          triggerClassName="secondary-project-photo-button"
-          triggerLabel={`View More from ${project.title}`}
-          triggerContent={(
-            <>
-              <svg aria-hidden="true" viewBox="0 0 24 24">
-                <rect x="3" y="3" width="18" height="18" rx="3" />
-                <circle cx="8" cy="8" r="1.5" />
-                <path d="m3 16 5-5 4 4 3-3 6 6" />
-              </svg>
-              <span>View More</span>
-            </>
-          )}
-        />
-      )}
+      <ProjectGalleryButton extraPic={project.extraPic} title={project.title} compact />
       {project.privateSource && (
         <span className="secondary-project-source-note" title="Source repository is private">
           <svg aria-hidden="true" viewBox="0 0 24 24">
@@ -107,6 +92,7 @@ const SecondaryProjectCard = ({
 
         <div className="secondary-project-content">
           <div className="project-card-main">
+            <ProjectStatus status={project.status} indicatorOnly />
             <div className="secondary-project-heading">
               <h3 className="secondary-project-title">{project.title}</h3>
             </div>
@@ -159,6 +145,11 @@ export const SecondaryProjectDetails = ({ project, detailsId, isExpanded, anchor
               <section key={section.title} className="secondary-project-section">
                 <h3>{section.title}</h3>
                 <p>{section.description}</p>
+                {section.extraPic?.length > 0 && (
+                  <div className="subproject-actions">
+                    <ProjectGalleryButton extraPic={section.extraPic} title={section.title} compact />
+                  </div>
+                )}
                 {section.images?.length > 0 && (
                   <div className="secondary-project-detail-images">
                     {section.images.map(({ src, alt }) => (
