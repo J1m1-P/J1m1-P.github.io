@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Local video source backups; use MP4 copies on the site
+*.[mM][oO][vV]
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
