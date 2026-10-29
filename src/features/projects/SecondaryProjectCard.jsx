@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import useScrollReveal from "../../hooks/useScrollReveal.js";
 import ProjectImageLightbox from "./ProjectImageLightbox.jsx";
 
 const ExternalIcon = ({ type }) => {
@@ -61,38 +61,18 @@ const SecondaryProjectCard = ({
   onToggle,
   detailsId,
 }) => {
-  const cardRef = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
-  const supportsIntersectionObserver = typeof IntersectionObserver !== "undefined";
+  const { elementRef: cardRef, isVisible } = useScrollReveal(
+    earlyReveal
+      ? { rootMargin: "0px 0px 5%", threshold: 0.05 }
+      : { rootMargin: "0px 0px -6%", threshold: 0.12 },
+  );
   const visibleSkills = project.skills?.slice(0, project.visibleSkillCount ?? 4);
   const hasDetails = Boolean(project.summary || project.subprojects?.length);
-
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (prefersReducedMotion || !cardRef.current || !supportsIntersectionObserver) {
-      return undefined;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        setIsVisible(true);
-        observer.disconnect();
-      },
-      earlyReveal
-        ? { rootMargin: "0px 0px 5%", threshold: 0.05 }
-        : { rootMargin: "0px 0px -6%", threshold: 0.12 },
-    );
-
-    observer.observe(cardRef.current);
-    return () => observer.disconnect();
-  }, [earlyReveal, supportsIntersectionObserver]);
 
   return (
     <article
       ref={cardRef}
-      className={`secondary-project-card${isVisible || !supportsIntersectionObserver ? " is-visible" : ""}${isExpanded ? " is-expanded" : ""}`}
+      className={`secondary-project-card${isVisible ? " is-visible" : ""}${isExpanded ? " is-expanded" : ""}`}
       style={{ "--reveal-delay": `${Math.min(revealIndex, 3) * 90}ms` }}
     >
       <div className={`secondary-project-compact${project.image ? "" : " secondary-project-compact--no-image"}`}>

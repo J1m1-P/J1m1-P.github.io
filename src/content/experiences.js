@@ -7,16 +7,16 @@ export const experiences = [
     title: "Firmware Team Lead",
     organization: "UBC Rocket Design Team",
     date: "Sept 2026 - Present",
-    image: "/images/experience/firmware-team-lead.jpg",
+    image: "/images/experience/firmware-team-lead2.png",
     imageAlt: "Firmware work with UBC Rocket",
     summary:
-      "Recently promoted to Firmware Co-Lead, where I helped with recruiting and interviewing new members for the team. This year, we're planning to bring new members up to speed through structured firmware lessons while the leads and returning members refactor last year's codebase to make it cleaner, easier to maintain, and ready for future development.",
+      "Recently promoted to Firmware Co-Lead, where I help recruit and interview new members, develop firmware lessons for the team, and work with returning members to refactor last year’s codebase into something cleaner and easier to build on. \n\n I’m also continuing to expand my embedded systems knowledge through STM32 development, motor-control interfaces, communication protocols, and testing. Recently, I’ve been diving deeper into Kalman filters, state estimation, and sensor fusion to better understand how noisy sensor data can be turned into useful information for controls and telemetry systems.",
   },
   {
     title: "Embedded Firmware Developer",
     organization: "UBC Rocket Design Team",
     date: "July 2025 - Aug 2026",
-    image: "/images/experience/embedded-firmware-developer.jpg",
+    image: "/images/experience/embedded-firmware-developer2.jpg",
     imageAlt: "Embedded firmware development with UBC Rocket",
     summary: 
       "I worked on UBC Rocket's embedded and ground-control software, mainly in C++ and Qt 6, supporting real-time telemetry, vehicle configuration, data visualization, and radio communication with the rocket. A lot of my work involved integrating sensor data, debugging communication between systems, and improving the ground station so the team could monitor and configure the vehicle more reliably during testing. On the embedded side, I also refactored a servo driver, contributed to the early implementation of DShot communication for an ESC, and gained some hands-on exposure to RTOS-based firmware.",
