@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PageButton from "../components/ui/PageButton.jsx";
-import ProjectCard from "../features/projects/ProjectCard.jsx";
+import FeaturedProjectCarousel from "../features/projects/FeaturedProjectCarousel.jsx";
 import SecondaryProjectCard, {
   SecondaryProjectDetails,
 } from "../features/projects/SecondaryProjectCard.jsx";
@@ -40,22 +40,10 @@ const ProjectsPage = () => {
         />
       </header>
 
-      <section className="featured-projects" aria-labelledby="featured-projects-title">
-        <div className="projects-section-heading">
-          <p className="eyebrow">Selected work</p>
-          <h2 id="featured-projects-title">Featured Projects</h2>
-        </div>
-
-        <div className="projects-grid">
-          {featuredProjects.map((project) => (
-            <ProjectCard
-              project={project}
-              key={project.id}
-              onProjectNavigate={navigateToProject}
-            />
-          ))}
-        </div>
-      </section>
+      <FeaturedProjectCarousel
+        projects={featuredProjects}
+        onProjectNavigate={navigateToProject}
+      />
 
       {secondaryProjects.length > 0 && (
         <section className="more-projects" aria-labelledby="more-projects-title">

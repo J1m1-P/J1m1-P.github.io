@@ -14,52 +14,6 @@
  */
 export const projects = [
   {
-    id: "ubc-rocket-firmware",
-    tier: "featured",
-    title: "Ulysses - Thrust Vectoring Firmware",
-    image: "/images/projects/ulysses-firmware/ulysses-firmware-cover.jpg",
-    summary: 
-      "Ulysses is the embedded flight-control firmware for UBC Rocket's experimental thrust-vectoring rocket, built around a dual-core STM32H745 microcontroller (Cortex-M7/M4) and FreeRTOS. The system integrates onboard sensors, state estimation, and real-time control algorithms to support active vehicle stabilization and thrust-vectoring. It incorporates motor and servo control, radio telemetry, inter-core communication, and SD-card flight-data logging. As Firmware Lead, I'm helping modernize the codebase with a modular hardware-abstraction architecture, CMake-based builds, automated testing, and GitHub CI to improve maintainability, reliability, and development workflows.", 
-    skills: ["C/C++", "STM32H745", "FreeRTOS", "Embedded Systems", "Sensor Fusion", "CMake", "GitHub CI/CD", "SPI/I²C/UART"],
-    github: "https://github.com/UBC-Rocket/ulysses", 
-    subprojects: [
-      {
-        title: "Firmware Architecture & FreeRTOS",
-        description: "Ulysses runs on an STM32H745 dual-core flight controller, utilizing Cortex-M7 and Cortex-M4 processors with FreeRTOS for real-time embedded operations. The firmware follows a layered architecture separating hardware peripherals, I/O interfaces, system services, and application logic. As Firmware Lead, I'm guiding the modernization of this architecture, restructuring the codebase into modular components, establishing clearer boundaries between layers, and coordinating the migration of existing flight-control functionality.", 
-        images: [
-          {src: "/images/projects/ulysses-firmware/architecture.png"}
-        ]
-      }, 
-      {
-        title: "Sensors & Actuators Drivers", 
-        description: "As Firmware Lead, I review PRs involving STM32 peripheral configuration, driver development, and hardware integration, with particular attention to clock configurations, registers, interrupts, DMA, and communication timing. My hands-on work includes implementing asynchronous, interrupt-driven I²C communication from scratch, refactoring servo drivers, developing PWM-based actuation, and contributing to early DShot communication for ESCs. I also have experience implementing UART and SPI interfaces, integrating IMUs and other sensors using vendor libraries, and working with peripheral registers and datasheets to debug hardware behavior.", 
-        images: [
-          {src: "images/projects/ulysses-firmware/mech-design-5.png"}
-        ]
-      }, 
-      {
-        title: "Flight Control & State Estimation", 
-        description: "As a member of both the Firmware and Controls teams, I work closely with controls developers to integrate PID-based flight-control algorithms and Extended Kalman Filter (EKF) state estimation into our STM32 firmware. I've also been independently studying Kalman filtering, sensor fusion, and control theory to better understand how sensor measurements are processed into reliable state estimates for feedback control. I also contributed to the development of the Ulysses Ground Control Station alongside other team members, building tools for real-time telemetry visualization, PID tuning, vehicle configuration, and diagnostics to support the Controls team's testing and development.", 
-        images: [
-          {src: "images/projects/ulysses-firmware/controls-design.png"}
-        ]
-      }, 
-      {
-        title: "Communication & Flight Data Logging", 
-        description: "Ulysses' previous firmware implementation supports bidirectional communication with the Ground Control Station through RFD900 radio modules and UART, using Protocol Buffers, COBS framing, and CRC16 for structured packet transmission. The system handles flight commands, PID tuning, vehicle configuration, and periodic telemetry containing estimated states, actuator outputs, and system health. It also implements asynchronous SD-card logging using DMA, buffered writes, and inter-core data transfer, alongside Python tools for decoding flight records and supporting post-test analysis.", 
-        projectLink: {
-          projectId: "ubc-rocket-ulysses-gcs",
-          label: "View Ground Control Station",
-        },
-      }, 
-      {
-        title: "Development Infrastructue & Testing", 
-        description: "I work with CMake-based dual-core STM32 builds and GitHub Actions CI, which runs Debug/Release builds and automated code-format checks. As Firmware Lead, I review PRs involving STM32 clock-tree configurations, peripheral initialization, interrupt and DMA handling, and driver implementations. I also help establish the firmware's layered architecture, coding conventions, and development workflow, including structured PR reviews and technical documentation.", 
-
-      }
-    ]
-  },
-  {
     id: "enph-253-autonomous-robot",
     tier: "featured",
     title: "Crabby - Autonomous Robot",
@@ -88,7 +42,7 @@ export const projects = [
       },
       {
         title: "Firmware / Drivers",
-        description: "I built Crabby's firmware around a modular driver layer that handled everything from motors and encoders to servos and custom tape-following sensors. The two ESP32-S3s and Raspberry Pi communicated over UART, while SPI and I²C connected the optical and LiDAR sensors; I also integrated the vendor LiDAR libraries, added module-level tests, and kept the overall code structure clean so behaviors could be tuned, swapped, and debugged quickly.",
+        description: "I built Crabby's firmware around a modular driver layer that handled everything from motors and encoders to servos and custom tape-following sensors. The two ESP32-S3s and Raspberry Pi communicated over UART, while SPI and I2C connected the optical and LiDAR sensors; I also integrated the vendor LiDAR libraries, added module-level tests, and kept the overall code structure clean so behaviors could be tuned, swapped, and debugged quickly.",
       },
       {
         title: "Controls",
@@ -102,6 +56,52 @@ export const projects = [
         ],
       },
     ],
+  },
+  {
+    id: "ubc-rocket-firmware",
+    tier: "featured",
+    title: "Ulysses - Thrust Vectoring Firmware",
+    image: "/images/projects/ulysses-firmware/ulysses-firmware-cover.jpg",
+    summary: 
+      "Ulysses is the embedded flight-control firmware for UBC Rocket's experimental thrust-vectoring rocket, built around a dual-core STM32H745 microcontroller (Cortex-M7/M4) and FreeRTOS. The system integrates onboard sensors, state estimation, and real-time control algorithms to support active vehicle stabilization and thrust-vectoring. It incorporates motor and servo control, radio telemetry, inter-core communication, and SD-card flight-data logging. As Firmware Lead, I'm helping modernize the codebase with a modular hardware-abstraction architecture, CMake-based builds, automated testing, and GitHub CI to improve maintainability, reliability, and development workflows.", 
+    skills: ["C/C++", "STM32H745", "FreeRTOS", "Embedded Systems", "Sensor Fusion", "CMake", "GitHub CI/CD", "SPI/I2C/UART"],
+    github: "https://github.com/UBC-Rocket/ulysses", 
+    subprojects: [
+      {
+        title: "Firmware Architecture & FreeRTOS",
+        description: "Ulysses runs on an STM32H745 dual-core flight controller, utilizing Cortex-M7 and Cortex-M4 processors with FreeRTOS for real-time embedded operations. The firmware follows a layered architecture separating hardware peripherals, I/O interfaces, system services, and application logic. As Firmware Lead, I'm guiding the modernization of this architecture, restructuring the codebase into modular components, establishing clearer boundaries between layers, and coordinating the migration of existing flight-control functionality.", 
+        images: [
+          {src: "/images/projects/ulysses-firmware/architecture.png"}
+        ]
+      }, 
+      {
+        title: "Sensors & Actuators Drivers", 
+        description: "As Firmware Lead, I review PRs involving STM32 peripheral configuration, driver development, and hardware integration, with particular attention to clock configurations, registers, interrupts, DMA, and communication timing. My hands-on work includes implementing asynchronous, interrupt-driven I2C communication from scratch, refactoring servo drivers, developing PWM-based actuation, and contributing to early DShot communication for ESCs. I also have experience implementing UART and SPI interfaces, integrating IMUs and other sensors using vendor libraries, and working with peripheral registers and datasheets to debug hardware behavior.", 
+        images: [
+          {src: "images/projects/ulysses-firmware/mech-design-5.png"}
+        ]
+      }, 
+      {
+        title: "Flight Control & State Estimation", 
+        description: "As a member of both the Firmware and Controls teams, I work closely with controls developers to integrate PID-based flight-control algorithms and Extended Kalman Filter (EKF) state estimation into our STM32 firmware. I've also been independently studying Kalman filtering, sensor fusion, and control theory to better understand how sensor measurements are processed into reliable state estimates for feedback control. I also contributed to the development of the Ulysses Ground Control Station alongside other team members, building tools for real-time telemetry visualization, PID tuning, vehicle configuration, and diagnostics to support the Controls team's testing and development.", 
+        images: [
+          {src: "images/projects/ulysses-firmware/controls-design.png"}
+        ]
+      }, 
+      {
+        title: "Communication & Flight Data Logging", 
+        description: "Ulysses' previous firmware implementation supports bidirectional communication with the Ground Control Station through RFD900 radio modules and UART, using Protocol Buffers, COBS framing, and CRC16 for structured packet transmission. The system handles flight commands, PID tuning, vehicle configuration, and periodic telemetry containing estimated states, actuator outputs, and system health. It also implements asynchronous SD-card logging using DMA, buffered writes, and inter-core data transfer, alongside Python tools for decoding flight records and supporting post-test analysis.", 
+        projectLink: {
+          projectId: "ubc-rocket-ulysses-gcs",
+          label: "View Ground Control Station",
+        },
+      }, 
+      {
+        title: "Development Infrastructue & Testing", 
+        description: "I work with CMake-based dual-core STM32 builds and GitHub Actions CI, which runs Debug/Release builds and automated code-format checks. As Firmware Lead, I review PRs involving STM32 clock-tree configurations, peripheral initialization, interrupt and DMA handling, and driver implementations. I also help establish the firmware's layered architecture, coding conventions, and development workflow, including structured PR reviews and technical documentation.", 
+
+      }
+    ]
   },
   {
     id: "ubc-rocket-ulysses-gcs",
