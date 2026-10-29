@@ -11,8 +11,10 @@
  * title and a short description. Add `projectLink: { projectId, label }` to
  * link to another project on this page. Add `images: [{ src, alt }, { src, alt }]`
  * to show two photos side by side; one image or no images also works.
+ * Secondary projects can add `extraPic: [{ src, alt }]` for a View More gallery button.
  */
 export const projects = [
+  // Featured Projects
   {
     id: "enph-253-autonomous-robot",
     tier: "featured",
@@ -57,6 +59,7 @@ export const projects = [
       },
     ],
   },
+
   {
     id: "ubc-rocket-firmware",
     tier: "featured",
@@ -103,6 +106,8 @@ export const projects = [
       }
     ]
   },
+
+  // Secondary Projects
   {
     id: "ubc-rocket-ulysses-gcs",
     tier: "secondary",
@@ -127,6 +132,7 @@ export const projects = [
       }
     ]
   },
+
   {
     id: "ghost-shell-linux-desktop-environment",
     tier: "secondary",
@@ -151,6 +157,7 @@ export const projects = [
       },
     ],
   },
+
   {
     id: "personal-portfolio-website",
     tier: "secondary",
@@ -177,6 +184,40 @@ export const projects = [
       },
     ],
   },
+
+  {
+    id: "closed-loop-RPM-motor-control", 
+    tier: "secondary", 
+    title: "Closed-Loop RPM Motor Control", 
+    image: "/images/projects/closed-loop-rpm-motor/rpm-motor-cover.jpg", 
+    imageAlt: "Closed-loop DC motor RPM control circuit", 
+    summary: 
+      "This project brought together analog feedback control and digital measurement circuitry to regulate a DC motor's rotational speed. The main challenges involved synchronizing digital measurements, converting them into usable analog feedback, and debugging the complete control loop.", 
+    compactSummary: 
+      "Built a mixed-signal, closed-loop DC motor controller using optical RPM feedback and analog PI control to regulate motor speed under varying operating conditions.", 
+    skills: ["Analog & Digital Circuits", "PI Control", "Digient AD3", "WaveForms"], 
+    extraPic: [
+      {
+        src: "/images/projects/closed-loop-rpm-motor/rpm-motor-extra-2.jpg",
+        alt: "Top view of the motor controller breadboard circuit, wiring, and motor sensor assembly",
+      },
+      {
+        src: "/images/projects/closed-loop-rpm-motor/rpm-motor-extra-1.jpg",
+        alt: "Optical motor RPM measurement with a Digilent instrument and a waveform displayed on a laptop",
+      },
+    ],
+    subprojects: [
+      {
+        title: "Circuit Design & Feedback Control", 
+        description: "Implemented optical RPM sensing using a phototransistor and a 10-hole encoder wheel. An 8-bit counter, latch, and R-2R DAC converted the measured pulse count into an analog feedback voltage, which an analog PI controller used to adjust the motor's drive signal."
+      }, 
+      {
+        title: "Instrumentation & Debugging", 
+        description: "Used Digilent AD3 and WaveForms' Oscilloscope, Logic Analyzer, and Pattern Generator to trace clock, latch, and reset signals, inspect DAC outputs, and identify wiring and timing faults. Evaluated the completed control loop under different RPM setpoints and mechanical loads.",
+      }
+    ]
+  }, 
+
   {
     id: "java-image-processor",
     tier: "secondary",
@@ -206,6 +247,7 @@ export const projects = [
       },
     ],
   },
+
   {
     id: "graph-algorithms-library",
     tier: "secondary",

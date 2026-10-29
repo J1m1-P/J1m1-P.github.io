@@ -24,7 +24,7 @@ const CompactLinks = ({ project }) => {
     project.news && { href: project.news, label: "News", type: "website" },
   ].filter(Boolean);
 
-  if (links.length === 0 && !project.privateSource) return null;
+  if (links.length === 0 && !project.privateSource && !project.extraPic?.length) return null;
 
   return (
     <div className="secondary-project-links" aria-label={`${project.title} links`}>
@@ -40,6 +40,24 @@ const CompactLinks = ({ project }) => {
           <span>{label}</span>
         </a>
       ))}
+      {project.extraPic?.length > 0 && (
+        <ProjectImageLightbox
+          images={project.extraPic}
+          alt={project.title}
+          triggerClassName="secondary-project-photo-button"
+          triggerLabel={`View More from ${project.title}`}
+          triggerContent={(
+            <>
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <rect x="3" y="3" width="18" height="18" rx="3" />
+                <circle cx="8" cy="8" r="1.5" />
+                <path d="m3 16 5-5 4 4 3-3 6 6" />
+              </svg>
+              <span>View More</span>
+            </>
+          )}
+        />
+      )}
       {project.privateSource && (
         <span className="secondary-project-source-note" title="Source repository is private">
           <svg aria-hidden="true" viewBox="0 0 24 24">

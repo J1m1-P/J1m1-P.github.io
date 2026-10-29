@@ -2,6 +2,7 @@ import { experiences } from "../content/experiences.js";
 import { projects } from "../content/projects.js";
 import { introWords, skillLogos } from "../content/site.js";
 import { preloadImages } from "./imagePreloader.js";
+import { isVideoMedia } from "./projectMedia.js";
 
 const homeImages = [
   "/images/home/background.png",
@@ -26,6 +27,9 @@ export const routeImages = {
     ].filter(Boolean),
     standard: [
       ...projects.map(({ image }) => image).filter(Boolean),
+      ...projects.flatMap(({ extraPic = [] }) =>
+        extraPic.filter((item) => !isVideoMedia(item)).map(({ src }) => src),
+      ),
       ...projects.flatMap(({ subprojects = [] }) =>
         subprojects.flatMap(({ images = [] }) =>
           images.map(({ src }) => src),
