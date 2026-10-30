@@ -46,6 +46,27 @@ export const projects = [
     news: "https://engineering.ubc.ca/news/2026/mars-madness-takes-over-annual-ubc-student-robot-competition",
     extraPic: [
       {
+        src: "/images/projects/crabby/crabby-handshaking.mp4",
+        alt: "Crabby Mars rover handshaking demo",
+        type: "video",
+      },
+      {
+        src: "/images/projects/crabby/crabby-team-1.jpg",
+        alt: "Crabby Mars rover team, photo 1",
+      },
+      {
+        src: "/images/projects/crabby/crabby-team-2.jpg",
+        alt: "Crabby Mars rover team, photo 2",
+      },
+      {
+        src: "/images/projects/crabby/crabby-team-3.png",
+        alt: "Crabby Mars rover team, photo 3",
+      },
+      {
+        src: "/images/projects/crabby/crabby-team-4.jpg",
+        alt: "Crabby Mars rover team, photo 4",
+      },
+      {
         src: "/images/projects/crabby/crabby-moving-1.mp4",
         alt: "Crabby Mars rover moving",
         type: "video",
@@ -58,11 +79,6 @@ export const projects = [
       {
         src: "/images/projects/crabby/crabby-moving-3.mp4",
         alt: "Crabby Mars rover moving, third demo",
-        type: "video",
-      },
-      {
-        src: "/images/projects/crabby/crabby-handshaking.mp4",
-        alt: "Crabby Mars rover handshaking demo",
         type: "video",
       },
       {
