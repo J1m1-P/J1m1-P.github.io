@@ -56,6 +56,11 @@ export const projects = [
         type: "video",
       },
       {
+        src: "/images/projects/crabby/crabby-moving-3.mp4",
+        alt: "Crabby Mars rover moving, third demo",
+        type: "video",
+      },
+      {
         src: "/images/projects/crabby/crabby-handshaking.mp4",
         alt: "Crabby Mars rover handshaking demo",
         type: "video",
