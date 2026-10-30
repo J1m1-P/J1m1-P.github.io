@@ -26,7 +26,8 @@ export const terminal = {
   host: "Terminal",
   welcome: [
     `Welcome to my website.`,
-    'Type "help" to see the available commands.',
+    'Type "help" to see the available commands.\n',
+    "PS: Every cat hides an Easter egg (Don't worry, they signed a waiver).",
   ],
   shortcuts: ["help", "ls", "cat about.txt", "clear", "reboot"],
   files: {
