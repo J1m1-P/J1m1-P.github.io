@@ -317,7 +317,7 @@ export const projects = [
     status: "in-progress",
     title: "Crashy - Dual-Core FPV Quadcopter",
 
-    image: "/images/projects/crashy-fpv-drone/cat-placeholder.jpg",
+    image: "/images/projects/crashy-fpv-drone/crashy-cover-larp-1.png",
     imageAlt: "Crashy custom FPV quadcopter project",
 
     summary:
