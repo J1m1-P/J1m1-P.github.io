@@ -3,11 +3,11 @@ import ProjectGalleryButton from "./ProjectGalleryButton.jsx";
 import ProjectImageLightbox from "./ProjectImageLightbox.jsx";
 import ProjectStatus from "./ProjectStatus.jsx";
 
-const ProjectImage = ({ image, imageAlt, imageBackdrop, title }) => (
+const ProjectImage = ({ image, imageAlt, title }) => (
   <ProjectImageLightbox
     src={image}
     alt={imageAlt ?? title}
-    triggerClassName={`project-image${imageBackdrop === "card" ? " project-image--card-background" : ""}`}
+    triggerClassName="project-image"
   />
 );
 
@@ -93,7 +93,6 @@ const ProjectCard = ({ project, onProjectNavigate, isExpanded, onToggleDetails }
       <ProjectImage
         image={project.image}
         imageAlt={project.imageAlt}
-        imageBackdrop={project.imageBackdrop}
         title={project.title}
       />
 

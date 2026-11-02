@@ -823,10 +823,6 @@ a {
   background: #151c2b;
 }
 
-.project-image--card-background {
-  background: #0e0e10;
-}
-
 .project-image img {
   display: block;
   width: 100%;
@@ -1692,10 +1688,6 @@ a {
   place-items: center;
   overflow: hidden;
   border-radius: 0.55rem;
-  background: transparent;
-}
-
-.secondary-project-image--card-background {
   background: transparent;
 }
 
@@ -2609,8 +2601,7 @@ a {
   flex-wrap: wrap;
 }
 
-.contact-link,
-.primary-link {
+.contact-link {
   display: inline-flex;
   align-items: center;
   border-radius: 0.75rem;
@@ -2649,8 +2640,7 @@ a {
   background: transparent;
 }
 
-.contact-link--primary .contact-link-icon svg,
-.contact-link--primary .contact-link-icon img {
+.contact-link--primary .contact-link-icon svg {
   width: 1.5rem;
   height: 1.5rem;
 }
@@ -2689,14 +2679,12 @@ a {
   background: transparent;
 }
 
-.contact-link-icon svg,
-.contact-link-icon img {
+.contact-link-icon svg {
   width: 1.35rem;
   height: 1.35rem;
 }
 
-.contact-link--email .contact-link-icon svg,
-.contact-link--email .contact-link-icon img {
+.contact-link--email .contact-link-icon svg {
   width: 1.5rem;
   height: 1.5rem;
 }
@@ -2976,19 +2964,6 @@ a {
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 1.6;
-}
-
-.primary-link {
-  gap: 0.4rem;
-  background: #d9ecff;
-  color: #0e0e10;
-  padding: 0.85rem 1.15rem;
-  font-weight: 700;
-}
-
-.primary-link:hover {
-  background: #fff;
-  transform: translateY(-2px);
 }
 
 .empty-state {

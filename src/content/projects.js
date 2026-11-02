@@ -497,7 +497,6 @@ export const projects = [
     title: "Portfolio Website",
 
     image: "/images/projects/portfolio/homepage.png",
-    imageBackdrop: "card",
     imageAlt: "Portfolio homepage with an engineering introduction and interactive terminal",
 
     summary:

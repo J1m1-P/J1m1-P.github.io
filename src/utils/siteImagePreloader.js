@@ -61,7 +61,7 @@ export const routeImages = {
 
 // Include only images used by the site, including collapsed project galleries.
 // Content-driven lists also pick up images from newly added entries.
-export const siteImages = [...new Set(
+const siteImages = [...new Set(
   Object.values(routeImages).flatMap(({ priority = [], standard = [] }) => [
     ...priority,
     ...standard,

@@ -85,7 +85,7 @@ const SecondaryProjectCard = ({
           <ProjectImageLightbox
             src={project.image}
             alt={project.imageAlt ?? project.title}
-            triggerClassName={`secondary-project-image${project.imageBackdrop === "card" ? " secondary-project-image--card-background" : ""}`}
+            triggerClassName="secondary-project-image"
             loading="lazy"
           />
         )}
