@@ -1241,6 +1241,157 @@ a {
   margin-top: 1.25rem;
 }
 
+/* Personal photo wall */
+.personal-gallery {
+  --photo-gap: clamp(1rem, 1.7vw, 1.5rem);
+  column-count: 4;
+  column-gap: var(--photo-gap);
+  padding: 0.75rem 0.35rem 2rem;
+}
+
+.personal-gallery-item {
+  --photo-angle: -1.2deg;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  min-width: 0;
+  margin-bottom: var(--photo-gap);
+  break-inside: avoid;
+  vertical-align: top;
+}
+
+.personal-gallery-item:nth-child(6n + 2),
+.personal-gallery-item:nth-child(6n) {
+  --photo-angle: 1.4deg;
+  width: 94%;
+  margin-left: 6%;
+}
+
+.personal-gallery-item:nth-child(6n + 3) {
+  --photo-angle: -0.7deg;
+}
+
+.personal-gallery-item:nth-child(6n + 4) {
+  --photo-angle: 0.8deg;
+  width: 96%;
+}
+
+.personal-photo {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 10%);
+  border-radius: 0.4rem;
+  background: #111;
+  color: #fff;
+  cursor: zoom-in;
+  text-align: left;
+  transform: rotate(var(--photo-angle));
+  box-shadow: 0 0.75rem 2.5rem rgb(0 0 0 / 20%);
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1), border-color 320ms ease;
+}
+
+.personal-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.personal-photo-caption {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 3rem clamp(0.75rem, 1.2vw, 1.25rem) clamp(0.75rem, 1.2vw, 1.25rem);
+  background: linear-gradient(transparent, rgb(0 0 0 / 82%));
+  color: #fff;
+  font-size: clamp(0.85rem, 1vw, 1rem);
+  font-weight: 550;
+  letter-spacing: -0.015em;
+  line-height: 1.4;
+  opacity: 0;
+  transform: translateY(0.4rem);
+  transition: opacity 220ms ease, transform 280ms ease;
+  pointer-events: none;
+}
+
+.personal-gallery-item:focus-within {
+  z-index: 1;
+}
+
+.personal-photo:focus-visible {
+  transform: rotate(0deg) scale(1.025);
+  border-color: rgb(255 255 255 / 30%);
+}
+
+.personal-photo:focus-visible .personal-photo-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .personal-gallery-item:hover {
+    z-index: 1;
+  }
+
+  .personal-photo:hover {
+    transform: rotate(0deg) scale(1.025);
+    border-color: rgb(255 255 255 / 30%);
+  }
+
+  .personal-photo:hover .personal-photo-caption {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .personal-photo-caption {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (min-width: 1280px) {
+  .personal-gallery {
+    column-count: 5;
+  }
+}
+
+@media (max-width: 900px) {
+  .personal-gallery {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 540px) {
+  .personal-gallery {
+    column-count: 1;
+  }
+
+  .personal-gallery-item:nth-child(n) {
+    width: 94%;
+    margin-left: 0;
+  }
+
+  .personal-gallery-item:nth-child(3n + 2) {
+    width: 88%;
+    margin-left: 12%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .personal-photo,
+  .personal-photo-caption {
+    transition: none;
+  }
+
+  .personal-photo:hover,
+  .personal-photo:focus-visible {
+    transform: rotate(var(--photo-angle));
+  }
+}
+
 .featured-projects {
   --featured-project-edge: clamp(0.9rem, 3.9vw, 3.5rem);
   --featured-project-arrow-width: 3.25rem;
