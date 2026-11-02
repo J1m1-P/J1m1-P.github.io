@@ -277,7 +277,7 @@ export const projects = [
           "As Firmware Lead, I review PRs involving STM32 peripheral configuration, driver development, and hardware integration, with particular attention to clock configurations, registers, interrupts, DMA, and communication timing. My hands-on work includes implementing asynchronous, interrupt-driven I2C communication from scratch, refactoring servo drivers, developing PWM-based actuation, and contributing to early DShot communication for ESCs. I also have experience implementing UART and SPI interfaces, integrating IMUs and other sensors using vendor libraries, and working with peripheral registers and datasheets to debug hardware behavior.",
         images: [
           {
-            src: "images/projects/ulysses-firmware/mech-design-5.png",
+            src: "/images/projects/ulysses-firmware/mech-design/mech-design-5.png",
           },
         ],
       },
