@@ -258,6 +258,39 @@ export const projects = [
     ],
 
     github: "https://github.com/UBC-Rocket/ulysses",
+    extraPic: [
+      {
+        src: "/images/projects/ulysses-firmware/ulysses-video-1.mp4",
+        alt: "Ulysses thrust-vectoring prototype demo, video 1",
+        type: "video",
+      },
+      {
+        src: "/images/projects/ulysses-firmware/ulysses-video-2.mp4",
+        alt: "Ulysses thrust-vectoring prototype demo, video 2",
+        type: "video",
+      },
+      {
+        src: "/images/projects/ulysses-firmware/ulysses-video-3.mp4",
+        alt: "Ulysses thrust-vectoring prototype demo, video 3",
+        type: "video",
+      },
+      {
+        src: "/images/projects/ulysses-firmware/ulysses-pic-1.jpg",
+        alt: "Ulysses prototype frame, landing legs, and propeller assembly",
+      },
+      {
+        src: "/images/projects/ulysses-firmware/ulysses-pic-2.jpg",
+        alt: "Ulysses prototype electronics and wiring on the workbench",
+      },
+      {
+        src: "/images/projects/ulysses-firmware/ulysses-pic-3.jpg",
+        alt: "Assembled Ulysses prototype with onboard electronics and landing legs",
+      },
+      {
+        src: "/images/projects/ulysses-firmware/ulysses-pic-4.jpg",
+        alt: "Ulysses propeller and motor test rig with control electronics on the workbench",
+      },
+    ],
 
     subprojects: [
       {
