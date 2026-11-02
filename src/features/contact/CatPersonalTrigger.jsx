@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { preloadImage } from '../../utils/imagePreloader.js';
+import { preloadPersonalImages } from '../../utils/siteImagePreloader.js';
 
 const catImages = {
   idle: '/images/cats/animation/gray-lying.png',
@@ -99,6 +100,9 @@ const CatPersonalTrigger = ({ onPersonalTransitionStarted }) => {
   const startAnimation = async () => {
     if (phaseRef.current !== 'idle') return;
 
+    // Load and decode the gallery while the cat animation is playing.
+    preloadPersonalImages('high');
+
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       onPersonalTransitionStarted();
       navigate('/personal');
@@ -161,6 +165,8 @@ const CatPersonalTrigger = ({ onPersonalTransitionStarted }) => {
           ref={catRef}
           aria-label="Follow the cat to the Personal page"
           disabled={phase !== 'idle'}
+          onPointerEnter={() => preloadPersonalImages()}
+          onFocus={() => preloadPersonalImages()}
           onClick={startAnimation}
           onAnimationEnd={(event) => {
             if (event.target === event.currentTarget && event.animationName === 'contact-cat-exit') {

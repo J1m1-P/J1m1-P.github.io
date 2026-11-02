@@ -1,4 +1,5 @@
 import { experiences } from "../content/experiences.js";
+import { personalPhotos } from "../content/personal.js";
 import { projects } from "../content/projects.js";
 import { introWords, skillLogos } from "../content/site.js";
 import { preloadImages } from "./imagePreloader.js";
@@ -11,6 +12,8 @@ const homeImages = [
   "/images/cats/protected/calico-lying.png",
   "/images/cats/protected/gray-lying.png",
 ];
+
+const personalImages = personalPhotos.map(({ src }) => src);
 
 export const routeImages = {
   "/": {
@@ -50,6 +53,10 @@ export const routeImages = {
       "/images/cats/animation/gray-jumping.png",
     ],
   },
+  "/personal": {
+    priority: personalImages.slice(0, 3),
+    standard: personalImages.slice(3),
+  },
 };
 
 // Include only images used by the site, including collapsed project galleries.
@@ -62,3 +69,6 @@ export const siteImages = [...new Set(
 )];
 
 export const preloadSiteImages = () => preloadImages(siteImages, "low");
+
+export const preloadPersonalImages = (fetchPriority = "auto") =>
+  preloadImages(personalImages, fetchPriority);
