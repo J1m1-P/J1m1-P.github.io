@@ -19,17 +19,17 @@ const PersonalPage = () => {
               triggerClassName="personal-photo"
               triggerLabel={`Enlarge photo: ${photo.caption}`}
               triggerContent={(
-                <>
+                <span className="personal-photo-frame">
                   <img
                     src={photo.src}
                     alt={photo.alt}
                     width={photo.width}
                     height={photo.height}
                     loading="eager"
-                    decoding="async"
+                    decoding="sync"
                   />
                   <span className="personal-photo-caption">{photo.caption}</span>
-                </>
+                </span>
               )}
             />
           </div>
