@@ -1,4 +1,5 @@
 import { experiences } from "../content/experiences.js";
+import { personalCats } from "../content/cats.js";
 import { personalPhotos } from "../content/personal.js";
 import { projects } from "../content/projects.js";
 import { introWords, skillLogos } from "../content/site.js";
@@ -46,12 +47,7 @@ export const routeImages = {
     standard: experiences.flatMap(({ image }) => image ? [image] : []),
   },
   "/contact": {
-    priority: [
-      "/images/cats/animation/gray-lying.png",
-      "/images/cats/animation/gray-standing.png",
-      "/images/cats/animation/gray-about-to-jump.png",
-      "/images/cats/animation/gray-jumping.png",
-    ],
+    priority: [...new Set(personalCats.flatMap(({ images }) => Object.values(images)))],
   },
   "/personal": {
     priority: personalImages.slice(0, 3),

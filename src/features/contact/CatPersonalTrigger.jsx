@@ -1,15 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { preloadImage } from '../../utils/imagePreloader.js';
+import { personalCats } from '../../content/cats.js';
+import { getCatFrame } from '../../utils/catSprites.js';
 import { preloadPersonalImages } from '../../utils/siteImagePreloader.js';
-
-const catImages = {
-  idle: '/images/cats/animation/gray-lying.png',
-  standing: '/images/cats/animation/gray-standing.png',
-  moving: '/images/cats/animation/gray-standing.png',
-  preparingToJump: '/images/cats/animation/gray-about-to-jump.png',
-  jumping: '/images/cats/animation/gray-jumping.png',
-};
+import CatSprite from './CatSprite.jsx';
 
 const waitForPaint = () => new Promise((resolve) => {
   requestAnimationFrame(() => requestAnimationFrame(resolve));
@@ -27,14 +21,19 @@ const timing = {
 
 const CatPersonalTrigger = ({ onPersonalTransitionStarted }) => {
   const navigate = useNavigate();
+  const [cat] = useState(() => personalCats[Math.floor(Math.random() * personalCats.length)]);
   const [phase, setPhase] = useState('idle');
   const phaseRef = useRef('idle');
   const sceneRef = useRef(null);
   const catRef = useRef(null);
-  const catImageRef = useRef(null);
   const frameRef = useRef(0);
   const timersRef = useRef([]);
   const mountedRef = useRef(true);
+
+  useEffect(() => {
+    // Prepare this cat's poses before the visitor starts its animation.
+    Promise.all(Object.keys(cat.images).map((pose) => getCatFrame(cat, pose))).catch(() => {});
+  }, [cat]);
 
   useEffect(() => {
     const timers = timersRef.current;
@@ -110,17 +109,8 @@ const CatPersonalTrigger = ({ onPersonalTransitionStarted }) => {
     }
 
     changePhase('standing');
-    await preloadImage(catImages.standing, 'high');
+    await getCatFrame(cat, 'standing').catch(() => {});
     await waitForAnimationFrame();
-
-    const standingImage = catImageRef.current;
-    if (standingImage?.decode) {
-      try {
-        await standingImage.decode();
-      } catch {
-        // The load event and preloader still make the sprite safe to render.
-      }
-    }
 
     if (!mountedRef.current || phaseRef.current !== 'standing') return;
 
@@ -149,6 +139,7 @@ const CatPersonalTrigger = ({ onPersonalTransitionStarted }) => {
   return (
     <div
       className={`contact-cat-scene is-${phase}`}
+      data-cat={cat.id}
       ref={sceneRef}
       style={{
         '--hop-duration': `${timing.traverse / timing.hops}ms`,
@@ -174,13 +165,10 @@ const CatPersonalTrigger = ({ onPersonalTransitionStarted }) => {
             }
           }}
         >
-          <img
-            ref={catImageRef}
+          <CatSprite
+            cat={cat}
+            phase={phase}
             className={`contact-cat-image${['moving', 'preparingToJump', 'jumping'].includes(phase) ? ' is-facing-right' : ''}`}
-            src={catImages[phase]}
-            alt=""
-            draggable="false"
-            fetchPriority={phase === 'idle' || phase === 'standing' ? 'high' : 'auto'}
           />
         </button>
       )}
